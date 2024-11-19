@@ -1,0 +1,19 @@
+{
+  "name": "gotchi-game-schemas",
+  "version": "1.0.0",
+  "description": "jsonlogic based schemas for aavegotchi-based games",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elfif/gotchi-game-schemas.git"
+  },
+  "author": "FiFoOoO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elfif/gotchi-game-schemas/issues"
+  },
+  "homepage": "https://github.com/elfif/gotchi-game-schemas#readme"
+}

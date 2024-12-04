@@ -1,0 +1,32 @@
+{ 
+  "name": "gotchi-battler",
+  "version": "1.7.0",
+  "description": "A gotchi battler game",
+  "author": "Immaterial",
+  "website": "https://gotchibattler.com/",
+  "schema": {
+    "classes": [
+      "cleavers",
+      "cursed",
+      "enlightened",
+      "healer",
+      "mage",
+      "ninja",
+      "tank",
+      "troll"
+    ],
+    "traits": [
+      "accuracy",
+      "action-delay",
+      "armor",
+      "attack",
+      "crit",
+      "evade",
+      "health",
+      "magic",
+      "physical",
+      "resist",
+      "speed"
+    ]
+  }
+}

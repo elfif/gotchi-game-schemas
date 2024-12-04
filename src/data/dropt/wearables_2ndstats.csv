@@ -1,0 +1,298 @@
+id,stat1,stat2
+1,0.025 Evasion,
+2,0.025 Evasion,
+3,0.1 CritDamageIncrease,
+4,0.05 Evasion,
+5,0.05 Evasion,
+6,0.3 CritDamageIncrease,
+7,0.08 ReduceMeleeDamage,0.25 Magnetism
+8,0.08 ReduceMeleeDamage,0.25 Magnetism
+9,0.9 Magnetism,
+10,0.15 SpecialCostReduction,0.35 Purveying
+11,0.15 SpecialCostReduction,0.35 Purveying
+12,0.3 CritDamageIncrease,0.35 DebuffEffectiveness
+13,0.008 ApLeech,0.3 CritDamageIncrease
+14,0.55 CritDamageIncrease,0.15 AttackRange
+15,0.12 ReduceMeleeDamage,0.2 ReduceElementalDamage
+16,0.12 ReduceMeleeDamage,0.18 ReduceRangedDamage
+17,0.008 ApLeech,0.25 AttackRange
+18,0.1 CritDamageIncrease,
+19,0.06 ReduceRangedDamage,
+20,0.025 Evasion,
+21,0.3 CritDamageIncrease,
+22,0.08 ReduceMeleeDamage,
+23,0.2 ReduceElementalDamage,
+24,0.08 DoubleStrikeChance,0.25 Magnetism
+25,0.18 ReduceRangedDamage,
+26,0.3 ReduceElementalDamage,
+27,0.006 ApLeech,0.15 SpecialCostReduction
+28,0.05 Evasion,0.12 ReduceRangedDamage
+29,0.08 DoubleStrikeChance,0.25 Piercing
+30,0.0035 EssenceLeech,0.12 ReduceRangedDamage
+31,0.15 MoveSpeed,0.35 Purveying
+32,0.5 Piercing,0.5 Magnetism
+33,0.12 DoubleStrikeChance,0.25 AttackRange
+34,0.12 ReduceMeleeDamage,0.65 DebuffEffectiveness
+35,0.15 MoveSpeed,0.12 ReduceMeleeDamage
+36,0.1 CritDamageIncrease,
+37,0.05 DoubleStrikeChance,
+38,0.25 Magnetism,
+39,0.05 Evasion,
+40,0.05 Evasion,
+41,0.12 ReduceRangedDamage,
+42,0.25 Piercing,0.1 DebuffEffectiveness
+43,0.65 DebuffEffectiveness,
+44,0.65 DebuffEffectiveness,
+45,0.08 DoubleStrikeChance,0.15 SpecialCostReduction
+46,0.3 CritDamageIncrease,0.05 Evasion
+47,0.3 ReduceElementalDamage,0.025 Evasion
+48,0.55 CritDamageIncrease,0.12 SpecialCooldownReduction
+49,0.0035 EssenceLeech,0.15 SpecialCostReduction
+50,0.25 SpecialCostReduction,0.006 ApLeech
+51,0.008 ApLeech,0.5 Magnetism
+52,0.55 CritDamageIncrease,0.25 AttackRange
+53,0.2 SpecialCooldownReduction,0.5 Piercing
+54,0.005 HpLeech,0.3 ReduceElementalDamage
+55,0.18 ReduceRangedDamage,
+56,0.15 MoveSpeed,
+57,0.08 DoubleStrikeChance,0.1 CritDamageIncrease
+58,0.5 Piercing,
+59,0.05 Evasion,0.05 MoveSpeed
+60,0.05 DoubleStrikeChance,
+61,0.08 DoubleStrikeChance,0.15 SpecialCostReduction
+62,0.12 DoubleStrikeChance,0.15 SpecialCostReduction
+63,0.12 DoubleStrikeChance,0.25 SpecialCostReduction
+64,0.004 ApLeech,
+65,0.006 ApLeech,0.15 AttackRange
+66,0.0015 EssenceLeech,
+67,0.0015 EssenceLeech,
+68,0.04 ReduceMeleeDamage,
+69,0.08 AttackRange,
+70,0.55 CritDamageIncrease,0.35 DebuffEffectiveness
+71,0.08 DoubleStrikeChance,0.06 ReduceRangedDamage
+72,0.005 HpLeech,0.05 Evasion
+73,0.008 ApLeech,0.08 DoubleStrikeChance
+74,0.3 ReduceElementalDamage,0.35 DebuffEffectiveness
+75,0.12 DoubleStrikeChance,0.5 Magnetism
+76,0.1 Purveying,
+77,0.3 CritDamageIncrease,
+78,0.25 Piercing,
+79,0.1 MoveSpeed,0.25 Magnetism
+80,0.0035 HpLeech,0.08 AttackRange
+81,0.05 Evasion,0.004 ApLeech
+82,0.0035 HpLeech,0.5 Magnetism
+83,0.12 DoubleStrikeChance,
+84,0.08 DoubleStrikeChance,0.12 SpecialCooldownReduction
+85,0.08 ReduceMeleeDamage,0.25 Piercing
+86,0.008 ApLeech,0.35 Purveying
+87,0.35 Purveying,
+88,0.35 Purveying,
+89,0.65 Purveying,
+90,0.004 ApLeech,
+91,0.006 ApLeech,
+92,0.005 HpLeech,
+93,0.12 ReduceRangedDamage,0.2 ReduceElementalDamage
+94,0.3 CritDamageIncrease,
+95,0.1 MoveSpeed,
+96,0.05 Evasion,
+97,0.12 ReduceMeleeDamage,0.025 Evasion
+98,0.12 ReduceMeleeDamage,0.06 ReduceRangedDamage
+99,0.5 Piercing,0.2 ReduceElementalDamage
+100,0.08 DoubleStrikeChance,0.15 AttackRange
+101,0.3 CritDamageIncrease,0.35 DebuffEffectiveness
+102,0.15 SpecialCostReduction,0.15 AttackRange
+103,0.25 AttackRange,0.006 ApLeech
+104,0.08 DoubleStrikeChance,0.25 Piercing
+105,0.35 DebuffEffectiveness,0.12 SpecialCooldownReduction
+106,0.0035 HpLeech,0.35 DebuffEffectiveness
+107,0.005 HpLeech,0.65 DebuffEffectiveness
+108,0.0025 EssenceLeech,
+109,0.12 ReduceRangedDamage,
+110,0.9 Magnetism,
+111,0.15 SpecialCostReduction,0.12 ReduceRangedDamage
+112,0.15 SpecialCostReduction,0.2 ReduceElementalDamage
+113,0.008 ApLeech,0.9 Magnetism
+114,0.075 Evasion,0.5 Magnetism
+115,0.05 Evasion,0.5 Magnetism
+116,0.25 SpecialCostReduction,
+117,0.05 DoubleStrikeChance,
+118,0.1 MoveSpeed,0.15 SpecialCostReduction
+119,0.0035 HpLeech,0.05 Evasion
+120,0.05 Evasion,0.35 DebuffEffectiveness
+121,0.05 Evasion,0.1 DebuffEffectiveness
+122,0.005 HpLeech,0.05 Evasion
+123,0.05 Evasion,
+124,0.12 DoubleStrikeChance,0.25 Piercing
+125,0.1 MoveSpeed,0.12 ReduceRangedDamage
+130,0.08 AttackRange,
+131,0.08 DoubleStrikeChance,
+132,0.12 ReduceRangedDamage,0.05 MoveSpeed
+133,0.08 DoubleStrikeChance,0.006 ApLeech
+134,0.05 SpecialCooldownReduction,
+135,0.12 ReduceRangedDamage,
+136,0.05 Evasion,0.05 MoveSpeed
+137,0.08 SpecialCostReduction,
+138,0.35 Purveying,
+139,0.08 ReduceMeleeDamage,0.004 ApLeech
+140,0.05 MoveSpeed,
+141,0.15 SpecialCostReduction,
+142,0.15 AttackRange,0.08 SpecialCostReduction
+143,0.15 SpecialCostReduction,0.35 Purveying
+144,0.008 ApLeech,0.3 CritDamageIncrease
+145,0.008 ApLeech,0.005 HpLeech
+146,0.025 Evasion,
+147,0.08 DoubleStrikeChance,
+148,0.25 AttackRange,
+149,0.08 DoubleStrikeChance,0.35 Purveying
+150,0.005 HpLeech,0.12 SpecialCooldownReduction
+151,0.05 DoubleStrikeChance,
+152,0.08 DoubleStrikeChance,
+153,0.08 DoubleStrikeChance,0.08 AttackRange
+154,0.08 DoubleStrikeChance,0.15 AttackRange
+155,0.12 DoubleStrikeChance,0.15 AttackRange
+156,0.12 DoubleStrikeChance,0.25 AttackRange
+157,0.15 SpecialCostReduction,
+158,0.65 DebuffEffectiveness,
+159,0.3 CritDamageIncrease,0.1 MoveSpeed
+160,0.005 HpLeech,0.12 ReduceRangedDamage
+161,0.0035 EssenceLeech,0.008 ApLeech
+199,0.3 CritDamageIncrease,0.1 Purveying
+200,0.3 CritDamageIncrease,
+201,0.5 Piercing,0.08 SpecialCostReduction
+202,0.65 DebuffEffectiveness,0.15 SpecialCostReduction
+203,0.006 ApLeech,0.025 Evasion
+204,0.15 SpecialCostReduction,
+205,0.05 MoveSpeed,
+206,0.08 ReduceMeleeDamage,0.05 MoveSpeed
+207,0.08 ReduceMeleeDamage,
+208,0.3 CritDamageIncrease,
+209,0.08 DoubleStrikeChance,0.5 Magnetism
+211,0.025 Evasion,
+212,0.3 ReduceElementalDamage,0.35 Purveying
+213,0.35 Purveying,0.006 ApLeech
+214,0.075 Evasion,0.3 ReduceElementalDamage
+215,0.65 DebuffEffectiveness,0.05 DoubleStrikeChance
+216,0.08 DoubleStrikeChance,0.65 DebuffEffectiveness
+217,0.008 ApLeech,0.5 Magnetism
+218,0.3 CritDamageIncrease,
+219,0.3 CritDamageIncrease,0.1 Piercing
+220,0.15 SpecialCostReduction,0.08 DoubleStrikeChance
+221,0.1 Purveying,
+222,0.35 Purveying,
+223,0.25 Piercing,
+224,0.0025 EssenceLeech,0.05 DoubleStrikeChance
+225,0.05 DoubleStrikeChance,
+226,0.1 MoveSpeed,0.025 Evasion
+227,0.2 ReduceElementalDamage,0.08 SpecialCostReduction
+228,0.08 AttackRange,
+229,0.0025 EssenceLeech,
+230,0.004 ApLeech,
+231,0.08 ReduceMeleeDamage,
+232,0.025 Evasion,
+233,0.0035 HpLeech,
+234,0.12 ReduceMeleeDamage,0.12 ReduceRangedDamage
+235,0.05 Evasion,0.2 ReduceElementalDamage
+236,0.0035 HpLeech,0.04 ReduceMeleeDamage
+237,0.005 HpLeech,0.08 ReduceMeleeDamage
+238,0.005 HpLeech,0.12 ReduceMeleeDamage
+239,0.5 Magnetism,
+240,0.35 Purveying,
+241,0.08 ReduceMeleeDamage,0.1 Piercing
+242,0.08 DoubleStrikeChance,0.15 AttackRange
+243,0.12 ReduceRangedDamage,0.1 ReduceElementalDamage
+244,0.05 Evasion,0.08 SpecialCostReduction
+245,0.15 SpecialCostReduction,0.1 Piercing
+246,0.35 Purveying,
+247,0.1 MoveSpeed,
+248,0.006 ApLeech,
+249,0.12 SpecialCooldownReduction,0.1 Purveying
+250,0.3 CritDamageIncrease,0.1 DebuffEffectiveness
+251,0.0025 EssenceLeech,0.05 MoveSpeed
+252,0.1 ReduceElementalDamage,
+253,0.06 ReduceRangedDamage,
+254,0.04 ReduceMeleeDamage,
+255,0.0025 EssenceLeech,0.5 Magnetism
+256,0.0035 HpLeech,0.35 Purveying
+257,0.08 DoubleStrikeChance,0.3 CritDamageIncrease
+258,0.25 SpecialCostReduction,0.075 Evasion
+259,0.25 AttackRange,0.5 Piercing
+260,0.55 CritDamageIncrease,0.65 DebuffEffectiveness
+261,0.18 ReduceRangedDamage,0.006 ApLeech
+262,0.18 ReduceRangedDamage,0.15 AttackRange
+263,0.9 Magnetism,0.15 AttackRange
+292,0.05 DoubleStrikeChance,
+293,0.05 DoubleStrikeChance,
+294,0.1 Piercing,
+295,0.1 CritDamageIncrease,
+296,0.1 MoveSpeed,
+297,0.3 CritDamageIncrease,
+298,0.1 CritDamageIncrease,
+299,0.08 DoubleStrikeChance,
+300,0.05 Evasion,
+301,0.15 AttackRange,0.04 ReduceMeleeDamage
+302,0.12 ReduceRangedDamage,0.25 Magnetism
+303,0.1 MoveSpeed,0.25 Magnetism
+304,0.05 Evasion,0.05 MoveSpeed
+305,0.1 MoveSpeed,0.0025 EssenceLeech
+306,0.006 ApLeech,0.15 SpecialCostReduction
+307,0.1 MoveSpeed,0.35 Purveying
+308,0.15 AttackRange,0.25 Piercing
+309,0.12 ReduceMeleeDamage,0.12 ReduceRangedDamage
+310,0.12 ReduceMeleeDamage,0.2 ReduceElementalDamage
+311,0.0035 EssenceLeech,0.15 AttackRange
+312,0.18 ReduceRangedDamage,0.08 ReduceMeleeDamage
+313,0.55 CritDamageIncrease,0.0035 EssenceLeech
+314,0.55 CritDamageIncrease,0.075 Evasion
+315,0.0035 EssenceLeech,0.12 DoubleStrikeChance
+350,0.05 MoveSpeed,
+351,0.25 Magnetism,
+352,0.004 ApLeech,
+353,0.05 MoveSpeed,
+354,0.15 SpecialCostReduction,
+355,0.25 Piercing,0.04 ReduceMeleeDamage
+356,0.08 ReduceMeleeDamage,
+357,0.12 DoubleStrikeChance,
+358,0.12 ReduceRangedDamage,0.2 ReduceElementalDamage
+359,0.65 Purveying,0.04 ReduceMeleeDamage
+360,0.08 DoubleStrikeChance,0.35 Purveying
+361,0.08 ReduceMeleeDamage,0.35 Purveying
+362,0.9 Magnetism,0.5 Piercing
+363,0.12 DoubleStrikeChance,0.35 DebuffEffectiveness
+364,0.65 DebuffEffectiveness,0.3 CritDamageIncrease
+365,0.65 DebuffEffectiveness,0.2 ReduceElementalDamage
+366,0.005 HpLeech,0.12 ReduceRangedDamage
+367,0.008 ApLeech,0.55 CritDamageIncrease
+368,0.12 DoubleStrikeChance,0.2 SpecialCooldownReduction
+369,0.15 MoveSpeed,0.12 DoubleStrikeChance
+370,0.0015 EssenceLeech,
+371,0.004 ApLeech,
+372,0.0025 HpLeech,
+373,0.1 MoveSpeed,
+374,0.008 ApLeech,
+375,0.004 ApLeech,
+376,0.08 ReduceMeleeDamage,0.1 DebuffEffectiveness
+377,0.08 DoubleStrikeChance,
+378,0.35 Purveying,0.05 SpecialCooldownReduction
+379,0.12 DoubleStrikeChance,
+380,0.006 ApLeech,0.5 Magnetism
+381,0.12 ReduceRangedDamage,0.2 ReduceElementalDamage
+382,0.35 DebuffEffectiveness,0.25 Piercing
+383,0.08 DoubleStrikeChance,0.15 AttackRange
+384,0.5 Piercing,0.3 CritDamageIncrease
+385,0.55 CritDamageIncrease,0.65 Purveying
+386,0.005 HpLeech,0.15 MoveSpeed
+387,0.55 CritDamageIncrease,0.075 Evasion
+388,0.1 Purveying,
+389,0.025 Evasion,
+390,0.04 ReduceMeleeDamage,
+391,0.3 CritDamageIncrease,
+392,0.35 DebuffEffectiveness,
+393,0.5 Magnetism,
+394,0.08 ReduceMeleeDamage,
+395,0.2 SpecialCooldownReduction,
+396,0.1 MoveSpeed,0.05 DoubleStrikeChance
+397,0.12 ReduceMeleeDamage,
+398,0.3 ReduceElementalDamage,0.0015 EssenceLeech
+399,0.006 ApLeech,0.0035 HpLeech
+400,0.25 SpecialCostReduction,0.05 Evasion
+401,0.0035 EssenceLeech,0.006 ApLeech

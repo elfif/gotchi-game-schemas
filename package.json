@@ -4,7 +4,13 @@
   "description": "jsonlogic based schemas for aavegotchi-based games",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "battler": "tsc && node dist/battler.js",
+    "dropt": "tsc && node dist/dropt.js",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "build": "npx tsc",
+    "battler:test": "node tools/battler17.js",
+    "dropt:wearable:generate": "tsc && node dist/scripts/dropt/generateWearableFiles.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,21 @@
   "bugs": {
     "url": "https://github.com/elfif/gotchi-game-schemas/issues"
   },
-  "homepage": "https://github.com/elfif/gotchi-game-schemas#readme"
+  "homepage": "https://github.com/elfif/gotchi-game-schemas#readme",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "csv-parse": "^5.6.0",
+    "figlet": "^1.8.0",
+    "json-logic-js": "^2.0.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@eslint/json": "^0.7.0",
+    "@types/figlet": "^1.7.0",
+    "@types/json-logic-js": "^2.0.8",
+    "@types/node": "^22.9.3",
+    "eslint": "^9.15.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.15.0"
+  }
 }

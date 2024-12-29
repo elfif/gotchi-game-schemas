@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { RulesLogic } from "json-logic-js";
-import { wearable, wearablesData } from "@/data/wearables.subgraph";
+import { wearable, wearablesData } from "../../data/wearables.subgraph";
 import { DroptWearable, WearableType } from "../../types/dropt";
 import { parse } from "csv-parse/sync";
 

@@ -3,15 +3,19 @@
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
-    "target": "es6",
-    "module": "commonjs",
+    "target": "es2018",
+    "module": "esnext",
     "sourceMap": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["src/*"]
+      "*": ["./src/*"]
     },
-    "baseUrl": "."
-  }
+    "lib": ["esnext"],
+    "declaration": true,
+    // "declarationDir": "types"
+  },
+  "include": ["src", "*.tsx", "*.ts", "*.json"],
+  "exclude": ["coverage", "config", "dist", "tools", "node_modules/**"]
 }

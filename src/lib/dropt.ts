@@ -1,5 +1,5 @@
-import { Gotchi } from "@/types/gotchi";
-import { DroptGotchi, DroptWearable } from "@/types/dropt";
+import { Gotchi } from "../types/gotchi";
+import { DroptGotchi, DroptWearable } from "../types/dropt";
 import { evaluateTrait } from "./helpers";
 import { RulesLogic } from "json-logic-js";
 import hp from "../games/dropt/traits/hp.json";

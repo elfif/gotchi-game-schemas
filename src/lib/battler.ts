@@ -1,5 +1,5 @@
-import { Gotchi } from "@/types/gotchi";
-import { BattlerGotchi } from "@/types/battler";
+import { Gotchi } from "../types/gotchi";
+import { BattlerGotchi } from "../types/battler";
 import { evaluateClass } from "./helpers";
 import { evaluateTrait } from "./helpers";
 import { RulesLogic } from "json-logic-js";

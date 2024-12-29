@@ -2,15 +2,24 @@
   "name": "gotchi-game-schemas",
   "version": "1.0.0",
   "description": "jsonlogic based schemas for aavegotchi-based games",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "battler": "tsc && node dist/battler.js",
     "dropt": "tsc && node dist/dropt.js",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
-    "build": "npx tsc",
+    "build": "rimraf dist && rollup -c",
     "battler:test": "node tools/battler17.js",
-    "dropt:wearable:generate": "tsc && node dist/scripts/dropt/generateWearableFiles.js"
+    "dropt:wearable:generate": "tsc && node dist/scripts/dropt/generateWearableFiles.js",
+    "tsc": "rimraf tsbuild && tsc"
   },
   "repository": {
     "type": "git",
@@ -23,18 +32,27 @@
   },
   "homepage": "https://github.com/elfif/gotchi-game-schemas#readme",
   "dependencies": {
+    "@rollup/plugin-typescript": "^12.1.1",
     "commander": "^12.1.0",
     "csv-parse": "^5.6.0",
     "figlet": "^1.8.0",
-    "json-logic-js": "^2.0.5"
+    "json-logic-js": "^2.0.5",
+    "rimraf": "^5.0.10",
+    "rollup-plugin-dts": "^6.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "@eslint/json": "^0.7.0",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/figlet": "^1.7.0",
     "@types/json-logic-js": "^2.0.8",
     "@types/node": "^22.9.3",
     "eslint": "^9.15.0",
+    "rollup": "^4.28.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.36.0",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.15.0"
   }

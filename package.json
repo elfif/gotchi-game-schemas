@@ -17,7 +17,9 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "build": "rimraf dist && rollup -c",
-    "battler:test": "node tools/battler17.js",
+    "battler:test": "tsx src/scripts/tests/battler.ts",
+    "strategotchi:test": "tsx src/scripts/tests/strategotchi.ts",
+    "dropt:test": "tsx src/scripts/tests/dropt.ts",
     "dropt:wearable:generate": "tsc && node dist/scripts/dropt/generateWearableFiles.js",
     "tsc": "rimraf tsbuild && tsc"
   },
@@ -53,6 +55,7 @@
     "rollup": "^4.28.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.15.0"
   }

@@ -13,74 +13,74 @@ import wearables from "../games/dropt/wearables/wearables.json";
 export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
   const droptGotchi = createEmptyDroptGotchi(gotchi);
 
-  droptGotchi.traits.hp = evaluateTrait(gotchi.traits, "hp", hp as RulesLogic);
+  droptGotchi.traits.hp = evaluateTrait(gotchi.traits, "hp", hp as RulesLogic) as number;
   droptGotchi.traits.attack = evaluateTrait(
     gotchi.traits,
     "attack",
     attack as RulesLogic
-  );
+  ) as number;
   droptGotchi.traits.critPercent = evaluateTrait(
     gotchi.traits,
     "crit",
     crit as RulesLogic
-  );
-  droptGotchi.traits.ap = evaluateTrait(gotchi.traits, "ap", ap as RulesLogic);
+  ) as number;
+  droptGotchi.traits.ap = evaluateTrait(gotchi.traits, "ap", ap as RulesLogic) as number;
   droptGotchi.traits.doubleStrikeChance = evaluateTrait(
     gotchi.traits,
     "doubleStrikeChance",
     doubleStrikeChance as RulesLogic
-  );
+  ) as number;
   droptGotchi.traits.critDamageIncrease = evaluateTrait(
     gotchi.traits,
     "critDamageIncrease",
     critDamageIncrease as RulesLogic
-  );
+  ) as number;
 
   const data = wearables as Array<DroptWearable>;
   for (const wearableId of gotchi.wearables) {
     const wearable = data.find((w) => w.id === wearableId);
     if (wearable) {
       if (wearable.gameTraitsModifiers.hp) {
-        droptGotchi.traits.hp = evaluateTrait(
+        droptGotchi.traits.hp = Math.round(evaluateTrait(
           droptGotchi.traits,
           "hp",
           wearable.gameTraitsModifiers.hp
-        );
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.attack) {
-        droptGotchi.traits.attack = evaluateTrait(
+        droptGotchi.traits.attack = Math.round(evaluateTrait(
           droptGotchi.traits,
           "attack",
           wearable.gameTraitsModifiers.attack
-        );
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.critPercent) {
-        droptGotchi.traits.critPercent = evaluateTrait(
+        droptGotchi.traits.critPercent = Math.round(evaluateTrait(
           droptGotchi.traits,
           "crit",
           wearable.gameTraitsModifiers.critPercent
-        );
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.ap) {
-        droptGotchi.traits.ap = evaluateTrait(
+        droptGotchi.traits.ap = Math.round(evaluateTrait(
           droptGotchi.traits,
           "ap",
           wearable.gameTraitsModifiers.ap
-        );
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.increasedAttackRange) {
-        droptGotchi.traits.increasedAttackRange = evaluateTrait(
+        droptGotchi.traits.increasedAttackRange = Math.round(evaluateTrait(
           droptGotchi.traits,
           "increasedAttackRange",
           wearable.gameTraitsModifiers.increasedAttackRange
-        );
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.doubleStrikeChance) {
-        droptGotchi.traits.doubleStrikeChance = evaluateTrait(
+        droptGotchi.traits.doubleStrikeChance = Math.round(evaluateTrait(
           droptGotchi.traits,
           "doubleStrikeChance",
           wearable.gameTraitsModifiers.doubleStrikeChance
-        );
+        ) as number);
       }
       /*
       Those traits are not implemented in the game yet 

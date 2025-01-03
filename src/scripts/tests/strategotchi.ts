@@ -7,7 +7,7 @@ const figlet = require("figlet");
 //add the following line
 const program = new Command();
 
-console.log(figlet.textSync("Strategotchi TEST Cli"));
+console.log(figlet.textSync("Strategotchi TEST Cli", {font: "Big"}));
 
 program
   .version("1.0.0")
@@ -16,8 +16,8 @@ program
 
 const options = program.opts();
 const gotchi: Gotchi = {
-  id: "1",
-  name: "test",
+  id: "11008",
+  name: "GFA_FiFoOoO",
   traits: {
     brs: 545,
     agg: 101,
@@ -27,7 +27,7 @@ const gotchi: Gotchi = {
     eys: 17,
     eyc: 20,
   },
-  wearables: [54, 295, 214, 309, 75, 79, 151],
+  wearables: [54, 295, 214, 309, 65, 201, 151],
 };
 
 function main() {

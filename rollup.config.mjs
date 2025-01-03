@@ -5,6 +5,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import external from "rollup-plugin-peer-deps-external";
 import dts from "rollup-plugin-dts";
+import { minify } from 'rollup-plugin-esbuild-minify'
 import typescriptEngine from "typescript";
 import json from "@rollup/plugin-json";
 const packageJson = JSON.parse(readFileSync("./package.json"));
@@ -19,12 +20,14 @@ export default defineConfig(
         sourcemap: false,
         exports: "named",
         name: packageJson.name,
+        compact: true,
       },
       {
         file: packageJson.module,
         format: "es",
         exports: "named",
         sourcemap: false,
+        compact: true,
       },
     ],
     plugins: [
@@ -45,6 +48,7 @@ export default defineConfig(
         ],
       }),
       json(),
+      minify()
     ],
   },
   {

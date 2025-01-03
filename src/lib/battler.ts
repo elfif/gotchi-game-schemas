@@ -59,15 +59,15 @@ export function createBattlerGotchi(gotchi: Gotchi): BattlerGotchi {
     battlerGotchi.classes.push(Classes.TROLL);
   }
 
-  battlerGotchi.traits.accuracy = evaluateTrait(gotchi.traits, 'accuracy', accuracy as RulesLogic) 
-  battlerGotchi.traits.armor = evaluateTrait(gotchi.traits, 'armor', armor as RulesLogic)
-  battlerGotchi.traits.crit = evaluateTrait(gotchi.traits, 'crit', crit as RulesLogic)
-  battlerGotchi.traits.evade = evaluateTrait(gotchi.traits, 'evade', evade as RulesLogic)
-  battlerGotchi.traits.health = evaluateTrait(gotchi.traits, 'health', health as RulesLogic)
-  battlerGotchi.traits.magic = evaluateTrait(gotchi.traits, 'magic', magic as RulesLogic)
-  battlerGotchi.traits.physical = evaluateTrait(gotchi.traits, 'physical', physical as RulesLogic)
-  battlerGotchi.traits.resist = evaluateTrait(gotchi.traits, 'resist', resist as RulesLogic)
-  battlerGotchi.traits.speed = evaluateTrait(gotchi.traits, 'speed', speed as RulesLogic)
+  battlerGotchi.traits.accuracy = evaluateTrait(gotchi.traits, 'accuracy', accuracy as RulesLogic) as number
+  battlerGotchi.traits.armor = evaluateTrait(gotchi.traits, 'armor', armor as RulesLogic) as number
+  battlerGotchi.traits.crit = evaluateTrait(gotchi.traits, 'crit', crit as RulesLogic) as number
+  battlerGotchi.traits.evade = evaluateTrait(gotchi.traits, 'evade', evade as RulesLogic) as number
+  battlerGotchi.traits.health = evaluateTrait(gotchi.traits, 'health', health as RulesLogic) as number
+  battlerGotchi.traits.magic = evaluateTrait(gotchi.traits, 'magic', magic as RulesLogic) as number
+  battlerGotchi.traits.physical = evaluateTrait(gotchi.traits, 'physical', physical as RulesLogic) as number
+  battlerGotchi.traits.resist = evaluateTrait(gotchi.traits, 'resist', resist as RulesLogic) as number
+  battlerGotchi.traits.speed = evaluateTrait(gotchi.traits, 'speed', speed as RulesLogic) as number
 
   return battlerGotchi;
 }

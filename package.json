@@ -21,7 +21,9 @@
     "strategotchi:test": "tsx src/scripts/tests/strategotchi.ts",
     "dropt:test": "tsx src/scripts/tests/dropt.ts",
     "dropt:wearable:generate": "tsc && node dist/scripts/dropt/generateWearableFiles.js",
-    "tsc": "rimraf tsbuild && tsc"
+    "strategotchi:wearable:generate": "tsx src/scripts/strategotchi/generateWearableFiles.ts",
+    "tsc": "rimraf tsbuild && tsc",
+    "tsx": "tsx"
   },
   "repository": {
     "type": "git",
@@ -53,6 +55,7 @@
     "@types/node": "^22.9.3",
     "eslint": "^9.15.0",
     "rollup": "^4.28.0",
+    "rollup-plugin-esbuild-minify": "^1.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "tsx": "^4.19.2",

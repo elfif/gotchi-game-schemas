@@ -2,12 +2,12 @@ import jsonLogic, { RulesLogic } from 'json-logic-js';
 
 export function evaluateClass(gotchi: any, className: string, logic: RulesLogic) {
   const jsl = getJsonLogicInstance()
-  return jsl.apply(logic, gotchi)
+  return jsl.apply(logic, gotchi) as boolean
 }
 
 export function evaluateTrait(gotchi: any, traitName: string, logic: RulesLogic) {
   const jsl = getJsonLogicInstance()
-  return jsl.apply(logic, gotchi)
+  return jsl.apply(logic, gotchi) as number
 }
 
 export function getJsonLogicInstance() {

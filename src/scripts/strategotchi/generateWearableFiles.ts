@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { RulesLogic } from "json-logic-js";
 import { wearable, wearablesData } from "../../data/wearables.subgraph";
-import { StrategotchiWearable, WearableType } from "types/strategotchi";
+import { StrategotchiWearable, StrategotchiWearableType } from "types/strategotchi";
 import { createEmptyStrategotchiWearable } from "lib/strategotchi";
 
 const destFolder = "./src/games/strategotchi/wearables/";
@@ -55,7 +55,7 @@ function generateWearableFiles() {
   );
 }
 
-function getHandWearableType(wearable: wearable): WearableType {
+function getHandWearableType(wearable: wearable): StrategotchiWearableType {
   if (meleeIds.includes(parseInt(wearable.id))) return "melee";
   if (rangedIds.includes(parseInt(wearable.id))) return "ranged";
   if (lobIds.includes(parseInt(wearable.id))) return "lobbed";

@@ -5,7 +5,7 @@ import { evaluateTrait } from "./helpers";
 import { RulesLogic } from "json-logic-js";
 import { Classes } from "../enums/battler";
 
-import cleavers from '../games/gotchi-battler/classes/cleavers.json'
+import cleaver from '../games/gotchi-battler/classes/cleaver.json'
 import cursed from '../games/gotchi-battler/classes/cursed.json'
 import enlightened from '../games/gotchi-battler/classes/enlightened.json'
 import healer from '../games/gotchi-battler/classes/healer.json'
@@ -27,47 +27,47 @@ import speed from '../games/gotchi-battler/traits/speed.json'
 export function createBattlerGotchi(gotchi: Gotchi): BattlerGotchi {
   const battlerGotchi = createEmptyBattlerGotchi(gotchi.id);
   
-  if (evaluateClass(gotchi.traits, Classes.CURSED, cursed as RulesLogic)) {
+  if (evaluateClass(gotchi.traits, cursed as RulesLogic)) {
     battlerGotchi.classes.push(Classes.CURSED);
   }
 
-  if (evaluateClass(gotchi.traits, Classes.CLEAVERS, cleavers as RulesLogic)) {
-    battlerGotchi.classes.push(Classes.CLEAVERS);
+  if (evaluateClass(gotchi.traits, cleaver as RulesLogic)) {
+    battlerGotchi.classes.push(Classes.CLEAVER);
   }
 
-  if (evaluateClass(gotchi.traits, Classes.ENLIGHTENED, enlightened as RulesLogic)) {
+  if (evaluateClass(gotchi.traits, enlightened as RulesLogic)) {
     battlerGotchi.classes.push(Classes.ENLIGHTENED);
   }
 
-  if (evaluateClass(gotchi.traits, Classes.HEALER, healer as RulesLogic)) {
+  if (evaluateClass(gotchi.traits, healer as RulesLogic)) {
     battlerGotchi.classes.push(Classes.HEALER);
   }
 
-  if (evaluateClass(gotchi.traits, Classes.MAGE, mage as RulesLogic)) {
+  if (evaluateClass(gotchi.traits, mage as RulesLogic)) {
     battlerGotchi.classes.push(Classes.MAGE);
   }
 
-  if (evaluateClass(gotchi.traits, Classes.NINJA, ninja as RulesLogic)) {
+  if (evaluateClass(gotchi.traits, ninja as RulesLogic)) {
     battlerGotchi.classes.push(Classes.NINJA);
   }
 
-  if (evaluateClass(gotchi.traits, Classes.TANK, tank as RulesLogic)) {
+  if (evaluateClass(gotchi.traits, tank as RulesLogic)) {
     battlerGotchi.classes.push(Classes.TANK);
   }
 
-  if (evaluateClass(gotchi.traits, Classes.TROLL, troll as RulesLogic)) {
+  if (evaluateClass(gotchi.traits, troll as RulesLogic)) {
     battlerGotchi.classes.push(Classes.TROLL);
   }
 
-  battlerGotchi.traits.accuracy = evaluateTrait(gotchi.traits, 'accuracy', accuracy as RulesLogic) as number
-  battlerGotchi.traits.armor = evaluateTrait(gotchi.traits, 'armor', armor as RulesLogic) as number
-  battlerGotchi.traits.crit = evaluateTrait(gotchi.traits, 'crit', crit as RulesLogic) as number
-  battlerGotchi.traits.evade = evaluateTrait(gotchi.traits, 'evade', evade as RulesLogic) as number
-  battlerGotchi.traits.health = evaluateTrait(gotchi.traits, 'health', health as RulesLogic) as number
-  battlerGotchi.traits.magic = evaluateTrait(gotchi.traits, 'magic', magic as RulesLogic) as number
-  battlerGotchi.traits.physical = evaluateTrait(gotchi.traits, 'physical', physical as RulesLogic) as number
-  battlerGotchi.traits.resist = evaluateTrait(gotchi.traits, 'resist', resist as RulesLogic) as number
-  battlerGotchi.traits.speed = evaluateTrait(gotchi.traits, 'speed', speed as RulesLogic) as number
+  battlerGotchi.traits.accuracy = Math.round(evaluateTrait(gotchi.traits, accuracy as RulesLogic) as number * 10) / 10
+  battlerGotchi.traits.armor = Math.round(evaluateTrait(gotchi.traits, armor as RulesLogic) as number)
+  battlerGotchi.traits.crit = Math.round(evaluateTrait(gotchi.traits, crit as RulesLogic) as number)
+  battlerGotchi.traits.evade = Math.round(evaluateTrait(gotchi.traits, evade as RulesLogic) as number)
+  battlerGotchi.traits.health = Math.round(evaluateTrait(gotchi.traits, health as RulesLogic) as number)
+  battlerGotchi.traits.magic = Math.round(evaluateTrait(gotchi.traits, magic as RulesLogic) as number)
+  battlerGotchi.traits.physical = Math.round(evaluateTrait(gotchi.traits, physical as RulesLogic) as number)
+  battlerGotchi.traits.resist = Math.round(evaluateTrait(gotchi.traits, resist as RulesLogic) as number)
+  battlerGotchi.traits.speed = Math.round(evaluateTrait(gotchi.traits, speed as RulesLogic) as number)
 
   return battlerGotchi;
 }

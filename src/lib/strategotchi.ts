@@ -29,12 +29,12 @@ export function createStrategotchiGotchi(gotchi: Gotchi): StrateGotchi {
 
   strategotchiGotchi.id = gotchi.id;
   // Main traits
-  strategotchiGotchi.traits.health = Math.round(evaluateTrait(gotchi.traits, "health", health as RulesLogic) as number);
-  strategotchiGotchi.traits.critChance = Math.round(evaluateTrait(gotchi.traits, "critChance", critChance as RulesLogic) as number);
-  strategotchiGotchi.traits.critDamage = Math.round(evaluateTrait(gotchi.traits, "critDamage", critDamage as RulesLogic) as number);
-  strategotchiGotchi.traits.evasion = Math.round(evaluateTrait(gotchi.traits, "evasion", evasion as RulesLogic) as number);
-  strategotchiGotchi.traits.stepsCount = Math.round(evaluateTrait(gotchi.traits, "stepsCount", stepsCount as RulesLogic) as number * 100) / 100;
-  strategotchiGotchi.traits.alchSite = Math.round(evaluateTrait(gotchi.traits, "alchSite", alchSite as RulesLogic) as number);
+  strategotchiGotchi.traits.health = Math.round(evaluateTrait(gotchi.traits, health as RulesLogic) as number);
+  strategotchiGotchi.traits.critChance = Math.round(evaluateTrait(gotchi.traits, critChance as RulesLogic) as number);
+  strategotchiGotchi.traits.critDamage = Math.round(evaluateTrait(gotchi.traits, critDamage as RulesLogic) as number);
+  strategotchiGotchi.traits.evasion = Math.round(evaluateTrait(gotchi.traits, evasion as RulesLogic) as number);
+  strategotchiGotchi.traits.stepsCount = Math.round(evaluateTrait(gotchi.traits, stepsCount as RulesLogic) as number * 100) / 100;
+  strategotchiGotchi.traits.alchSite = Math.round(evaluateTrait(gotchi.traits, alchSite as RulesLogic) as number);
 
   // Hands / weapons
   const leftHand = wearables.find(wearable => wearable.id === gotchi.wearables[LeftHandSlotIndex]);

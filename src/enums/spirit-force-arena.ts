@@ -9,7 +9,7 @@ export enum SfaClasses {
   DIVINE = "divine",
 }
 
-export enum WeaponTypes {
+export enum SfaWeaponTypes {
   MELEE = "melee",
   RANGED = "ranged",
   GRENADE = "grenade",

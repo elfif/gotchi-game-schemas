@@ -3,8 +3,10 @@ export * from "./dropt";
 export * from "./gotchi";
 export * from "./schema";
 export * from "./strategotchi";
+export * from "./spirit-force-arena";
 export declare enum Games {
     BATTLER = "Gotchi Battler",
     DROPT = "Dropt",
-    STRATEGOTCHI = "Strategotchi"
+    STRATEGOTCHI = "Strategotchi",
+    SFA = "Spirit Force Arena"
 }

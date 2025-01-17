@@ -1,3 +1,5 @@
+import { SfaWeaponTypes } from "enums/spirit-force-arena";
+
 export type SfaMaxTraits = {
   max_hp: number;
   max_ap: number;
@@ -57,30 +59,23 @@ export type SfaMinTraits = {
 export type SfaTraits = {
   hp: number;
   ap: number;
-  melee_damage: number;
-  ranged_damage: number;
-  ads_view: number;
-  luck: number;
-  stealth: number;
-  critical_chance: number;
   hp_regen: number;
   ap_regen: number;
-  active_damage_reduction: number;
-  passive_damage_reduction: number;
+  melee_damage: number;
+  ranged_damage: number;
+  falloff: number;
+  armor: number;
+  blocking_strength: number;
+  grenade_dmg: number | null;
+  grenade_type: string | null;
   critical_damages_multiplier: number;
+  critical_chance: number;
+  ads_view: number;
+  damage_to_npc: number | null;
   movement_speed: number;
-  evasion: number;
-  damage_to_npc: number;
-  melee_basic_boost: number;
-  melee_long_range_boost: number;
-  melee_high_rate_boost: number;
-  melee_pierce_boost: number;
-  ranged_basic_boost: number;
-  ranged_fall_off_boost: number;
-  ranged_magical_boost: number;
-  ranged_sniper_boost: number;
-  basic_grenade_boost: number;
-  impact_grenade_boost: number;
+  evasion: number | null;
+  luck: number;
+  stealth: number | null;
 }
 
 export type MappedTraits = {
@@ -92,11 +87,19 @@ export type MappedTraits = {
   bEyc: number;
 }
 
-export type SpiritForceArenaGotchiTraits = SfaTraits & SfaMaxTraits & SfaMinTraits;
+export type SpiritForceArenaGotchiTraits = SfaTraits //& SfaMaxTraits & SfaMinTraits;
 
 export type SpiritForceArenaGotchi = {
   id: string;
   class: string;
   traits: SpiritForceArenaGotchiTraits;
+  rightHand: SpiritForceArenaWeapon | null;
+  leftHand: SpiritForceArenaWeapon | null;
+};
+
+export type SpiritForceArenaWeapon = {
+  id: number;
+  name: string;
+  type: SfaWeaponTypes  ;
 };
 

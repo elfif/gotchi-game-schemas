@@ -182,5 +182,12 @@ function createEmptyDroptGotchi(gotchi: Gotchi): DroptGotchi {
       extraDash: 0,
       purveying: 0,
     },
+    rightHand: null,
+    leftHand: null,
+    head: null,
+    body: null,
+    face: null,
+    eyes: null,
+    pet: null,
   };
 }

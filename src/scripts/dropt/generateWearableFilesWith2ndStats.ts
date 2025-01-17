@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import { RulesLogic } from "json-logic-js";
 import { wearable, wearablesData } from "../../data/wearables.subgraph";
-import { DroptWearable, WearableType } from "../../types/dropt";
+import { DroptWearable, DroptWearableTrait, WearableType } from "../../types/dropt";
 import { parse } from "csv-parse/sync";
 
-const secTraitsCSV = "./data/dropt/wearables_2ndstats.csv";
+const secTraitsCSV = "./src/data/dropt/wearables_2ndstats.csv";
 const destFolder = "./src/games/dropt/wearables/";
 const meleeIds = [
   296, 89, 83, 106, 70, 311, 107, 315, 26, 148, 379, 257, 360, 100, 369, 69,
@@ -35,21 +35,23 @@ function generateWearableFiles() {
   const csvData = parse(csvFile, { columns: true }) as Array<SecTraitsCSV>;
 
   const result: Array<DroptWearable> = [];
-
+  const resultTrait: Array<DroptWearableTrait> = [];
   for (const wearable of wearablesData) {
-    const data: DroptWearable = createEmptyDroptWearable();
+    let data: DroptWearable = createEmptyDroptWearable();
+    let dataTrait: DroptWearableTrait = createEmptyDroptWearableTrait();
     data.type = getHandWearableType(wearable);
     data.id = parseInt(wearable.id);
     data.rarityScoreModifier = wearable.rarityScoreModifier;
-    result.push(
-      generateSecTraitsLogicFromCSV(
-        wearable,
-        generateModifierLogic(wearable, data),
-        csvData
-      )
-    );
+    dataTrait.type = getHandWearableType(wearable);
+    dataTrait.id = parseInt(wearable.id);
+    dataTrait.rarityScoreModifier = wearable.rarityScoreModifier;
+    ({data, dataTrait} = generateSecTraitsLogicFromCSV(wearable, data, dataTrait, csvData));
+    result.push(data);
+    resultTrait.push(dataTrait);
   }
   fs.writeFileSync(`${destFolder}wearables.json`, JSON.stringify(result, replacer));
+
+  fs.writeFileSync(`${destFolder}wearables_trait.ts`, `import { DroptWearableTrait } from "types/dropt";\n\nexport const wearablesTrait: Array<DroptWearableTrait> = ${JSON.stringify(resultTrait, replacer)}`);
 }
 
 function getHandWearableType(
@@ -63,23 +65,32 @@ function getHandWearableType(
 
 function generateModifierLogic(
   wearable: wearable,
-  data: DroptWearable
+  data: DroptWearable,
+  dataTrait: DroptWearableTrait
 ): DroptWearable {
   for (const [index, traitModifier] of wearable.traitModifiers.entries()) {
     if (traitModifier !== 0) {
       switch (index) {
         case 0: // nrg
-          data.gameTraitsModifiers.hp = generateHpLogic(traitModifier, wearable.rarityScoreModifier);
+          let rule, rawValue;
+          ({ rule, rawValue } = generateHpLogic(traitModifier, wearable.rarityScoreModifier));  
+          data.gameTraitsModifiers.hp = rule;
+          dataTrait.gameTraitsModifiers.hp = rawValue;
           break;
         case 1: // agg
-          data.gameTraitsModifiers.attack = generateAttackLogic(traitModifier, wearable.rarityScoreModifier);
+          ({ rule, rawValue } = generateAttackLogic(traitModifier, wearable.rarityScoreModifier));
+          data.gameTraitsModifiers.attack = rule;
+          dataTrait.gameTraitsModifiers.attack = rawValue;
           break;
         case 2: // spk
-          data.gameTraitsModifiers.critPercent =
-            generateCritLogic(traitModifier, wearable.rarityScoreModifier);
+          ({ rule, rawValue } = generateCritLogic(traitModifier, wearable.rarityScoreModifier));
+          data.gameTraitsModifiers.critPercent = rule;
+          dataTrait.gameTraitsModifiers.critPercent = rawValue;
           break;
         case 3: // brn
-          data.gameTraitsModifiers.ap = generateApLogic(traitModifier, wearable.rarityScoreModifier);
+          ({ rule, rawValue } = generateApLogic(traitModifier, wearable.rarityScoreModifier));
+          data.gameTraitsModifiers.ap = rule;
+          dataTrait.gameTraitsModifiers.ap = rawValue;
           break;
       }
     }
@@ -87,99 +98,88 @@ function generateModifierLogic(
   return data;
 }
 
-function generateHpLogic(traitModifier: number, rarityScoreModifier: number): RulesLogic {
+function generateHpLogic(traitModifier: number, rarityScoreModifier: number): {rule: RulesLogic, rawValue: number} {
   switch (rarityScoreModifier) {
     case 1:
-      return { "+": [{ var: "hp" }, 25 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "hp" }, 25 * Math.abs(traitModifier)] }, rawValue: 25 * Math.abs(traitModifier) };
     case 2:
-      return { "+": [{ var: "hp" }, 37.5 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "hp" }, 37.5 * Math.abs(traitModifier)] }, rawValue: 37.5 * Math.abs(traitModifier) };
     case 5:
-      return { "+": [{ var: "hp" }, 50 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "hp" }, 50 * Math.abs(traitModifier)] }, rawValue: 50 * Math.abs(traitModifier) };
     case 10:
-      return { "+": [{ var: "hp" }, 56 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "hp" }, 56 * Math.abs(traitModifier)] }, rawValue: 56 * Math.abs(traitModifier) };
     case 20:
-      return { "+": [{ var: "hp" }, 60 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "hp" }, 60 * Math.abs(traitModifier)] }, rawValue: 60 * Math.abs(traitModifier) };
     case 50:
-      return { "+": [{ var: "hp" }, 70 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "hp" }, 70 * Math.abs(traitModifier)] }, rawValue: 70 * Math.abs(traitModifier) };
     default:
-      return null;
+      return { rule: null, rawValue: 0 };
   }
 }
 
-function generateAttackLogic(traitModifier: number, rarityScoreModifier: number): RulesLogic {
+function generateAttackLogic(traitModifier: number, rarityScoreModifier: number): {rule: RulesLogic, rawValue: number} {
   switch (rarityScoreModifier) {
     case 1:
-      return { "+": [{ var: "attack" }, 2.5 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "attack" }, 2.5 * Math.abs(traitModifier)] }, rawValue: 2.5 * Math.abs(traitModifier) };
     case 2:
-      return { "+": [{ var: "attack" }, 3.75 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "attack" }, 3.75 * Math.abs(traitModifier)] }, rawValue: 3.75 * Math.abs(traitModifier) };
     case 5:
-      return { "+": [{ var: "attack" }, 5 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "attack" }, 5 * Math.abs(traitModifier)] }, rawValue: 5 * Math.abs(traitModifier) };
     case 10:
-      return { "+": [{ var: "attack" }, 5.5 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "attack" }, 5.5 * Math.abs(traitModifier)] }, rawValue: 5.5 * Math.abs(traitModifier) };
     case 20:
-      return { "+": [{ var: "attack" }, 6 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "attack" }, 6 * Math.abs(traitModifier)] }, rawValue: 6 * Math.abs(traitModifier) };
     case 50:
-      return { "+": [{ var: "attack" }, 6.67 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "attack" }, 6.67 * Math.abs(traitModifier)] }, rawValue: 6.67 * Math.abs(traitModifier) };
     default:
-      return null;
+      return { rule: null, rawValue: 0 };
   }
 }
 
-function generateCritLogic(traitModifier: number, rarityScoreModifier: number): RulesLogic {
+function generateCritLogic(traitModifier: number, rarityScoreModifier: number): {rule: RulesLogic, rawValue: number} {
   switch (rarityScoreModifier) {
     case 1:
-      return {
-        "+": [{ var: "critPercent" }, 2 * Math.abs(traitModifier)],
-      };
+      return { rule: { "+": [{ var: "critPercent" }, 2 * Math.abs(traitModifier)] }, rawValue: 2 * Math.abs(traitModifier) };
     case 2:
-      return {
-        "+": [{ var: "critPercent" }, 1.5 * Math.abs(traitModifier)],
-      };
+      return { rule: { "+": [{ var: "critPercent" }, 1.5 * Math.abs(traitModifier)] }, rawValue: 1.5 * Math.abs(traitModifier) };
     case 5:
-      return {
-        "+": [{ var: "critPercent" }, 1.7 * Math.abs(traitModifier)],
-      };
+        return {  rule: { "+": [{ var: "critPercent" }, 1.7 * Math.abs(traitModifier)] }, rawValue: 1.7 * Math.abs(traitModifier) };
     case 10:
-      return {
-        "+": [{ var: "critPercent" }, 1.8 * Math.abs(traitModifier)],
-      };
+      return { rule: { "+": [{ var: "critPercent" }, 1.8 * Math.abs(traitModifier)] }, rawValue: 1.8 * Math.abs(traitModifier) };
     case 20:
-      return {
-        "+": [{ var: "critPercent" }, 2 * Math.abs(traitModifier)],
-      };
+      return { rule: { "+": [{ var: "critPercent" }, 2 * Math.abs(traitModifier)] }, rawValue: 2 * Math.abs(traitModifier) };
     case 50:
-      return {
-        "+": [{ var: "critPercent" }, 2.3 * Math.abs(traitModifier)],
-      };
+      return { rule: { "+": [{ var: "critPercent" }, 2.3 * Math.abs(traitModifier)] }, rawValue: 2.3 * Math.abs(traitModifier) };
     default:
-      return null;
+      return { rule: null, rawValue: 0 };
   }
 }
 
-function generateApLogic(traitModifier: number, rarityScoreModifier: number): RulesLogic {
+function generateApLogic(traitModifier: number, rarityScoreModifier: number): {rule: RulesLogic, rawValue: number} {
   switch (rarityScoreModifier) {
     case 1:
-      return { "+": [{ var: "ap" }, 12.5 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "ap" }, 12.5 * Math.abs(traitModifier)] }, rawValue: 12.5 * Math.abs(traitModifier) };
     case 2:
-      return { "+": [{ var: "ap" }, 18.75 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "ap" }, 18.75 * Math.abs(traitModifier)] }, rawValue: 18.75 * Math.abs(traitModifier) };
     case 5:
-      return { "+": [{ var: "ap" }, 25 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "ap" }, 25 * Math.abs(traitModifier)] }, rawValue: 25 * Math.abs(traitModifier) };
     case 10:
-      return { "+": [{ var: "ap" }, 28 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "ap" }, 28 * Math.abs(traitModifier)] }, rawValue: 28 * Math.abs(traitModifier) };
     case 20:
-      return { "+": [{ var: "ap" }, 30 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "ap" }, 30 * Math.abs(traitModifier)] }, rawValue: 30 * Math.abs(traitModifier) };
     case 50:
-      return { "+": [{ var: "ap" }, 35 * Math.abs(traitModifier)] };
+      return { rule: { "+": [{ var: "ap" }, 35 * Math.abs(traitModifier)] }, rawValue: 35 * Math.abs(traitModifier) };
     default:
-      return null;
+      return { rule: null, rawValue: 0 };
   }
 }
 
 function generateSecTraitsLogicFromCSV(
   wearable: wearable,
   data: DroptWearable,
+  dataTrait: DroptWearableTrait,
   csvData: Array<SecTraitsCSV>
-) {
+): {data: DroptWearable, dataTrait: DroptWearableTrait} {
   const wearableId = parseInt(wearable.id);
   const csvWearable = csvData.find((csv) => csv.id === wearableId.toString());
   if (csvWearable) {
@@ -197,6 +197,9 @@ function generateSecTraitsLogicFromCSV(
           "+": [{ var: camelCaseProperty }, numberValue],
         };
       }
+      if (hasOwnProperty(dataTrait.gameTraitsModifiers, camelCaseProperty)) {
+        dataTrait.gameTraitsModifiers[camelCaseProperty] = numberValue;
+      }
     }
 
     if (csvWearable.stat2) {
@@ -212,9 +215,12 @@ function generateSecTraitsLogicFromCSV(
           "+": [{ var: camelCaseProperty }, numberValue],
         };
       }
+      if (hasOwnProperty(dataTrait.gameTraitsModifiers, camelCaseProperty)) {
+        dataTrait.gameTraitsModifiers[camelCaseProperty] = numberValue;
+      }
     }
   }
-  return data;
+  return {data, dataTrait};
 }
 
 function hasOwnProperty<X extends {}, Y extends PropertyKey>(
@@ -225,6 +231,48 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
 }
 
 function createEmptyDroptWearable(): DroptWearable {
+  return {
+    gameTraitsModifiers: {
+      //primary traits
+      hp: null,
+      attack: null,
+      critPercent: null,
+      ap: null,
+      //secondary traits
+      evasion: null,
+      apRegen: null,
+      rangedDamage: null,
+      // Attack
+      critDamageIncrease: null,
+      specialEffect: null,
+      debuffEffectiveness: null,
+      specialCooldownReduction: null,
+      piercing: null,
+      specialCostReduction: null,
+      increasedAttackRange: null,
+      doubleStrikeChance: null,
+      // Survivability
+      armour: null,
+      reduceMeleeDamage: null,
+      reduceMagicalDamage: null,
+      reduceElementalDamage: null,
+      apLeech: null,
+      hpLeech: null,
+      essenceLeech: null,
+      // Environment
+      moveSpeed: null,
+      magnetism: null,
+      extraDash: null,
+      purveying: null,
+    },
+    type: null,
+    rarityScoreModifier: 0,
+    id: 0,
+    traitsModifiers: [],
+  };
+}
+
+function createEmptyDroptWearableTrait(): DroptWearableTrait {
   return {
     gameTraitsModifiers: {
       //primary traits

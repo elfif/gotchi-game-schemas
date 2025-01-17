@@ -29,14 +29,30 @@ export type DroptGotchi = {
         extraDash: number;
         purveying: number;
     };
+    rightHand: DroptWearableTrait | null;
+    leftHand: DroptWearableTrait | null;
+    head: DroptWearableTrait | null;
+    body: DroptWearableTrait | null;
+    face: DroptWearableTrait | null;
+    eyes: DroptWearableTrait | null;
+    pet: DroptWearableTrait | null;
 };
 export type DroptWearable = {
     id: number;
-    type: WearableType;
+    type?: WearableType;
     rarityScoreModifier: number;
     traitsModifiers: Array<number>;
     gameTraitsModifiers: {
         [Property in keyof DroptGotchi["traits"]]?: RulesLogic | null;
+    };
+};
+export type DroptWearableTrait = {
+    id: number;
+    type?: WearableType;
+    rarityScoreModifier: number;
+    traitsModifiers: Array<number>;
+    gameTraitsModifiers: {
+        [Property in keyof DroptGotchi["traits"]]?: number | null;
     };
 };
 export type WearableType = "melee" | "ranged" | "shield" | null;

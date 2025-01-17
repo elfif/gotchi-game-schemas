@@ -21,6 +21,7 @@
     "strategotchi:test": "tsx src/scripts/tests/strategotchi.ts",
     "dropt:test": "tsx src/scripts/tests/dropt.ts",
     "dropt:wearable:generate": "tsc && node dist/scripts/dropt/generateWearableFiles.js",
+    "dropt:wearable:generate:2ndstats": "tsx src/scripts/dropt/generateWearableFilesWith2ndStats.ts",
     "strategotchi:wearable:generate": "tsx src/scripts/strategotchi/generateWearableFiles.ts",
     "tsc": "rimraf tsbuild && tsc",
     "tsx": "tsx"

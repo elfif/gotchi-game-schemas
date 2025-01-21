@@ -1,4 +1,5 @@
-import { SfaWeaponTypes } from "enums/spirit-force-arena";
+import { SfaWeaponCategories, SfaWeaponTypes,  } from "enums/spirit-force-arena";
+import { RulesLogic } from "json-logic-js";
 
 export type SfaMaxTraits = {
   max_hp: number;
@@ -87,7 +88,7 @@ export type MappedTraits = {
   bEyc: number;
 }
 
-export type SpiritForceArenaGotchiTraits = SfaTraits //& SfaMaxTraits & SfaMinTraits;
+export type SpiritForceArenaGotchiTraits = SfaTraits & MappedTraits //& SfaMaxTraits & SfaMinTraits;
 
 export type SpiritForceArenaGotchi = {
   id: string;
@@ -97,9 +98,51 @@ export type SpiritForceArenaGotchi = {
   leftHand: SpiritForceArenaWeapon | null;
 };
 
+export type SfaMeleeWeaponTraits = {
+  damage: number;
+  attack_speed: number;
+  armor_piercing: number;
+  range_multiplier: number;
+}
+
+export type SfaRangedWeaponTraits = {
+  damage: number;
+  attack_speed: number;
+  aim_fov: number;
+  fall_off: number;
+  max_dispersion: number;
+  min_dispersion: number;
+  dispersion_increase_per_shot: number;
+  dispersion_decrease_rate: number;
+  dispersion_ads: number;
+  recoil_strength: number;
+  recoil_decrease_rate: number;
+}
+
+export type SfaGrenadeWeaponTraits = {
+  damage: number;
+  radius_multiplier: number;
+  can_bounce: boolean;
+}
+
+export type SfaWearable = {
+    id: string;
+    name: string;
+    rarity: number;
+    gameTraitsModifiers: {
+      [Property in keyof SpiritForceArenaGotchiTraits]?: RulesLogic | null
+    };
+}
+
+export type SfaWeaponTraits = SfaMeleeWeaponTraits | SfaRangedWeaponTraits | SfaGrenadeWeaponTraits;
+
 export type SpiritForceArenaWeapon = {
-  id: number;
+  id: string;
   name: string;
-  type: SfaWeaponTypes  ;
+  rarity: number;
+  disabled?: boolean;
+  type: "melee_pierce" | "melee_long_range" | "melee_high_rate" | "melee_basic" | "ranged_basic" | "ranged_fall_off" | "ranged_magical" | "ranged_sniper" | "grenade_basic" | "grenade_impact";
+  category: "melee" | "ranged" | "grenade"; 
+  traits: SfaWeaponTraits;
 };
 

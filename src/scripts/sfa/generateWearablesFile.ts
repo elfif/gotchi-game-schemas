@@ -1,8 +1,7 @@
-import { wearable, wearablesData } from "../../data/wearables.subgraph";
 import { parse } from "csv-parse/sync";
 import * as fs from "fs";
 import { RulesLogic } from "json-logic-js";
-import { SfaWearable, SpiritForceArenaGotchiTraits, SpiritForceArenaWeapon } from "types/spirit-force-arena";
+import { SfaTraits, SfaWearable, SpiritForceArenaGotchiTraits, WeaponCategory, WeaponType, MeleeWeaponTypes, RangedWeaponTypes, GrenadeWeaponTypes, ShieldWeaponTypes, MELEE_WEAPON_TYPES, RANGED_WEAPON_TYPES, GRENADE_WEAPON_TYPES, SHIELD_WEAPON_TYPES } from "types/spirit-force-arena";
 
 const wearablesCsv = "./src/data/sfa/wearables_modifiers.csv";
 const destFolder = "./src/games/spirit-force-arena/wearables/";
@@ -34,29 +33,91 @@ function generateWearablesFile() {
   const csvFile = fs.readFileSync(wearablesCsv, "utf8");
   const csvData = parse(csvFile, { columns: true }) as Array<SfaWearableCSV>;
 
-  const result: Array<SfaWearable> = [];
-  const typesToDiscard = ["melee_pierce", "melee_long_range", "melee_high_rate", "melee_basic", "ranged_basic", "ranged_fall_off", "ranged_magical", "ranged_sniper", "basic_grenade", "impact_grenade"]
+  const result: Array<SfaWearable> = []; 
 
   for (const csvWearable of csvData) {
-    // We discard all weapons as their additional traits are not implemented in-game apparently.
-    if (typesToDiscard.includes(csvWearable.type.toLowerCase().replace(" ", "_").replace("-", "_"))) {
-      continue;
-    }
+    let gameTraitModifier: RulesLogic = {"+": [0,0]}
+    let traitName: keyof SpiritForceArenaGotchiTraits
+    let type: WeaponType | null = null
+    let category: WeaponCategory | null = null
+    const wearableType = csvWearable.type.toLowerCase().replace(" ", "_").replace("-", "_")
 
-    const traitName = getTraitNameFromCsvStat(csvWearable.stat);
+    if (isMeleeWeaponType(wearableType)) {
+      type = wearableType as WeaponType
+      category = "melee" as WeaponCategory
+      const coeff = getBaseCoeffPerWeaponType(wearableType)
+      const tmp = coeff + coeff * parseFloat(csvWearable.value)
+      // https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary
+      // GO there if you are not aware of the EPSILON trick. 
+      const roundedTmp = Math.round((tmp + Number.EPSILON) * 1000) / 1000
+      traitName = "melee_damage" as keyof SpiritForceArenaGotchiTraits
+      gameTraitModifier = {"+": [{"*": [{ var: "melee_damage" }, coeff]}, roundedTmp]}
+    } else if (isRangedWeaponType(wearableType)) {
+      type = wearableType as WeaponType
+      category = "ranged" as WeaponCategory
+      const coeff = getBaseCoeffPerWeaponType(wearableType)
+      const tmp = coeff + coeff * parseFloat(csvWearable.value)
+      const roundedTmp = Math.round((tmp + Number.EPSILON) * 1000) / 1000
+      traitName = "ranged_damage" as keyof SpiritForceArenaGotchiTraits
+      gameTraitModifier = {"+": [{"*": [{ var: "ranged_damage" }, coeff]}, roundedTmp]}
+    } else if (isGrenadeWeaponType(wearableType)) {
+      type = wearableType as WeaponType
+      category = "grenade" as WeaponCategory
+      const coeff = getBaseCoeffPerWeaponType(wearableType)
+      const tmp = coeff + coeff * parseFloat(csvWearable.value)
+      const roundedTmp = Math.round((tmp + Number.EPSILON) * 1000) / 1000
+      traitName = "grenade_dmg" as keyof SpiritForceArenaGotchiTraits
+      gameTraitModifier = {"+": [{"*": [{ var: "grenade_dmg" }, coeff]}, roundedTmp]}
+    } else if (isShieldWeaponType(wearableType)) {
+      traitName = getTraitNameFromCsvStat(csvWearable.stat);
+      type = wearableType as WeaponType
+      category = "shield" as WeaponCategory
+      gameTraitModifier = {"+": [{ var: traitName }, csvWearable.value]}
+    } else {
+      traitName = getTraitNameFromCsvStat(csvWearable.stat);
+      gameTraitModifier = {"+": [{ var: traitName }, csvWearable.value]}
+    }
+    
 
     const wearable: SfaWearable = {
       id: csvWearable.id,
       name: csvWearable.name,
       rarity: convertRarityFromCSV(csvWearable.rarity),
+      type: type,
+      category: category,
+      attack_rate: getAttackRateByType(wearableType),
       gameTraitsModifiers: {
-        [traitName]: {"+": [{ var: traitName }, csvWearable.value]}
+        traitName: traitName as keyof SfaTraits,
+        value: gameTraitModifier
       },
     }
     result.push(wearable);
   }
 
   fs.writeFileSync(`${destFolder}wearables.json`, JSON.stringify(result, replacer));
+}
+
+function getAttackRateByType(type: string): number {
+  switch (type) {
+    case "melee_basic":
+      return 2
+    case "melee_long_range":
+      return 1
+    case "melee_high_rate":
+      return 4
+    case "melee_pierce":
+      return 3
+    case "ranged_basic":
+      return 3
+    case "ranged_fall_off":
+      return 2
+    case "ranged_magical":
+      return 5
+    case "ranged_sniper":
+      return 1
+    default:
+      return 1
+  }
 }
 
 function getTraitNameFromCsvStat(stat: string): keyof SpiritForceArenaGotchiTraits {
@@ -114,6 +175,33 @@ function convertRarityFromCSV(rarity: string): number {
   }
 }
 
+function getBaseCoeffPerWeaponType(weaponType: string): number {
+  switch (weaponType) {
+    case "melee_basic":
+      return 150
+    case "melee_long_range":
+      return 200
+    case "melee_high_rate":
+      return 90
+    case "melee_pierce":
+      return 115
+    case "ranged_basic":
+      return 66
+    case "ranged_fall_off":
+      return 133
+    case "ranged_magical":
+      return 55
+    case "ranged_sniper":
+      return 200
+    case "basic_grenade":
+      return 200
+    case "impact_grenade":
+      return 150
+    default:
+      return 0
+  }
+}
+
 // Replacer function to keep only non null values in the final json.
 // This reduces size drastically.
 function replacer(key: string, value: any) {
@@ -122,6 +210,22 @@ function replacer(key: string, value: any) {
     return undefined;
   }
   return value;
+}
+
+function isMeleeWeaponType(type: string): type is MeleeWeaponTypes {
+  return MELEE_WEAPON_TYPES.includes(type as MeleeWeaponTypes)
+}
+
+function isRangedWeaponType(type: string): type is RangedWeaponTypes {
+  return RANGED_WEAPON_TYPES.includes(type as RangedWeaponTypes)
+}
+
+function isGrenadeWeaponType(type: string): type is GrenadeWeaponTypes {
+  return GRENADE_WEAPON_TYPES.includes(type as GrenadeWeaponTypes)
+}
+
+function isShieldWeaponType(type: string): type is ShieldWeaponTypes {
+  return SHIELD_WEAPON_TYPES.includes(type as ShieldWeaponTypes)
 }
 
 generateWearablesFile();

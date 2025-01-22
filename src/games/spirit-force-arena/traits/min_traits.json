@@ -12,7 +12,7 @@
     "min_active_damage_reduction": 0.2,
     "min_passive_damage_reduction": 0.1,
     "min_critical_damages_multiplier": 2,
-    "min_movement_speed": 1,
+    "min_movement_speed": 0,
     "min_evasion": 0,
     "min_damage_to_npc": 1,
     "min_melee_basic_boost": 125,

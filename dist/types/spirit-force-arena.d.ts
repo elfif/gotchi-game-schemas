@@ -1,4 +1,5 @@
-import { SfaWeaponTypes } from "enums/spirit-force-arena";
+import { SfaClasses } from "enums/spirit-force-arena";
+import { RulesLogic } from "json-logic-js";
 export type SfaMaxTraits = {
     max_hp: number;
     max_ap: number;
@@ -14,16 +15,6 @@ export type SfaMaxTraits = {
     max_movement_speed: number;
     max_evasion: number;
     max_damage_to_npc: number;
-    max_melee_basic_boost: number;
-    max_melee_long_range_boost: number;
-    max_melee_high_rate_boost: number;
-    max_melee_pierce_boost: number;
-    max_ranged_basic_boost: number;
-    max_ranged_fall_off_boost: number;
-    max_ranged_magical_boost: number;
-    max_ranged_sniper_boost: number;
-    max_basic_grenade_boost: number;
-    max_impact_grenade_boost: number;
 };
 export type SfaMinTraits = {
     min_hp: number;
@@ -42,16 +33,6 @@ export type SfaMinTraits = {
     min_movement_speed: number;
     min_evasion: number;
     min_damage_to_npc: number;
-    min_melee_basic_boost: number;
-    min_melee_long_range_boost: number;
-    min_melee_high_rate_boost: number;
-    min_melee_pierce_boost: number;
-    min_ranged_basic_boost: number;
-    min_ranged_fall_off_boost: number;
-    min_ranged_magical_boost: number;
-    min_ranged_sniper_boost: number;
-    min_basic_grenade_boost: number;
-    min_impact_grenade_boost: number;
 };
 export type SfaTraits = {
     hp: number;
@@ -60,6 +41,8 @@ export type SfaTraits = {
     ap_regen: number;
     melee_damage: number;
     ranged_damage: number;
+    melee_dps: number;
+    ranged_dps: number;
     falloff: number;
     armor: number;
     blocking_strength: number;
@@ -82,16 +65,71 @@ export type MappedTraits = {
     bEys: number;
     bEyc: number;
 };
-export type SpiritForceArenaGotchiTraits = SfaTraits;
+export type SpiritForceArenaGotchiTraits = SfaTraits & MappedTraits;
 export type SpiritForceArenaGotchi = {
     id: string;
-    class: string;
+    className: SfaClasses;
     traits: SpiritForceArenaGotchiTraits;
-    rightHand: SpiritForceArenaWeapon | null;
-    leftHand: SpiritForceArenaWeapon | null;
+    wearables: SfaWearable[];
+    meleeWeapon: SfaWearable | null;
+    rangedWeapon: SfaWearable | null;
+    grenadeWeapon: SfaWearable | null;
 };
-export type SpiritForceArenaWeapon = {
-    id: number;
+export type SfaMeleeWeaponTraits = {
+    damage: number;
+    attack_speed: number;
+    armor_piercing: number;
+    range_multiplier: number;
+};
+export type SfaRangedWeaponTraits = {
+    damage: number;
+    attack_speed: number;
+    aim_fov: number;
+    fall_off: number;
+    max_dispersion: number;
+    min_dispersion: number;
+    dispersion_increase_per_shot: number;
+    dispersion_decrease_rate: number;
+    dispersion_ads: number;
+    recoil_strength: number;
+    recoil_decrease_rate: number;
+};
+export type SfaGrenadeWeaponTraits = {
+    damage: number;
+    radius_multiplier: number;
+    can_bounce: boolean;
+};
+export interface SfaWearableTraitModifier {
+    traitName: keyof SfaTraits;
+    value: RulesLogic;
+}
+export interface SfaWearable {
+    id: string;
+    rarity: number;
     name: string;
-    type: SfaWeaponTypes;
+    type: WeaponType | null;
+    category: WeaponCategory | null;
+    attack_rate?: number;
+    gameTraitsModifiers: SfaWearableTraitModifier;
+}
+export type SfaWeaponTraits = SfaMeleeWeaponTraits | SfaRangedWeaponTraits | SfaGrenadeWeaponTraits;
+export type SpiritForceArenaWeapon = {
+    id: string;
+    name: string;
+    rarity: number;
+    disabled?: boolean;
+    type: WeaponType;
+    category: WeaponCategory;
+    traits: SfaWeaponTraits;
 };
+export declare const MELEE_WEAPON_TYPES: string[];
+export declare const RANGED_WEAPON_TYPES: string[];
+export declare const GRENADE_WEAPON_TYPES: string[];
+export declare const SHIELD_WEAPON_TYPES: string[];
+export type MeleeWeaponTypes = typeof MELEE_WEAPON_TYPES[number];
+export type RangedWeaponTypes = typeof RANGED_WEAPON_TYPES[number];
+export type GrenadeWeaponTypes = typeof GRENADE_WEAPON_TYPES[number];
+export type ShieldWeaponTypes = typeof SHIELD_WEAPON_TYPES[number];
+export type WeaponType = MeleeWeaponTypes | RangedWeaponTypes | GrenadeWeaponTypes | ShieldWeaponTypes;
+export declare const WEAPON_CATEGORIES: string[];
+export type WeaponCategory = typeof WEAPON_CATEGORIES[number];

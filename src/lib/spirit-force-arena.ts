@@ -1,122 +1,31 @@
-// import { SpiritForceArenaGotchi } from "types/spirit-force-arena";
-// import { Gotchi } from "types/gotchi";
-// import { SfaClasses, SfaWeaponTypes } from "enums/spirit-force-arena";
-
-// const LeftHandSlotIndex = 4;
-// const RightHandSlotIndex = 5;
-
-// export function createSpiritForceArenaGotchi(gotchi: Gotchi): SpiritForceArenaGotchi {
-//   // switch(gotchi.id) {
-  //   case "11008": 
-  //     return get11008(gotchi);
-  //   case "2935":
-  //     return get2935(gotchi);
-  //   default:  
-  //     return get2935(gotchi);
-  // }
-}
-
-// function get11008(gotchi: Gotchi): SpiritForceArenaGotchi {
-
-//   const leftHand = gotchi.wearables[LeftHandSlotIndex];
-//   const rightHand = gotchi.wearables[RightHandSlotIndex];
-
-//   return {
-//     id: gotchi.id,
-//     class: SfaClasses.MYTHICAL,
-//     traits: {
-//       hp: 3450,
-//       ap: 314,
-//       hp_regen: 13,
-//       ap_regen: 5,
-//       melee_damage: 366,
-//       ranged_damage: 233,
-//       falloff: 1,
-//       armor: 20,
-//       blocking_strength: 22,
-//       grenade_dmg: 0,
-//       grenade_type: null,
-//       critical_damages_multiplier: 2,
-//       critical_chance: 10,
-//       ads_view: 10,
-//       damage_to_npc: null,
-//       movement_speed: 0,
-//       evasion: null,
-//       luck: 0.33,
-//       stealth: null,
-//     },
-//     rightHand: {
-//       id: 65,
-//       name: "Legendary Wizard Staff",
-//       type: SfaWeaponTypes.RANGED
-//     },
-//     leftHand: {
-//       id: 201,
-//       name: "Mechanical claw",
-//       type: SfaWeaponTypes.MELEE
-//     }
-//   }
-// }
-
-// function get2935(gotchi: Gotchi): SpiritForceArenaGotchi {
-
-//   const leftHand = gotchi.wearables[LeftHandSlotIndex];
-//   const rightHand = gotchi.wearables[RightHandSlotIndex];
-
-//   return {
-//     id: gotchi.id,
-//     class: SfaClasses.LEGENDARY,
-//     traits: {
-//       hp: 3900,
-//       ap: 196,
-//       hp_regen: 10,
-//       ap_regen: 7,
-//       melee_damage: 211.5,
-//       ranged_damage: 99.7,
-//       falloff: 1,
-//       armor: 50,
-//       blocking_strength: 10,
-//       grenade_dmg: 250.1,
-//       grenade_type: "impact",
-//       critical_damages_multiplier: 2,
-//       critical_chance: 10,
-//       ads_view: 10,
-//       damage_to_npc: null,
-//       movement_speed: 50.06,
-//       evasion: null,
-//       luck: 0.49,
-//       stealth: null,
-//     },
-//     rightHand: {
-//       id: 225,
-//       name: "BasketBall",
-//       type: SfaWeaponTypes.RANGED
-//     },
-//     leftHand: null
-//   }
-// }
-
-import { SfaMaxTraits, SfaMinTraits, SfaTraits, MappedTraits, SpiritForceArenaWeapon, SfaWearable } from "types/spirit-force-arena";
-import { Gotchi } from "types/gotchi";
-import min_traits from "../games/spirit-force-arena/traits/min_traits.json"
-import max_traits from "../games/spirit-force-arena/traits/max_traits.json"
-import apprentice from "../games/spirit-force-arena/classes/apprentice.json"
-import common from "../games/spirit-force-arena/classes/common.json"
-import uncommon from "../games/spirit-force-arena/classes/uncommon.json"
-import rare from "../games/spirit-force-arena/classes/rare.json"
-import legendary from "../games/spirit-force-arena/classes/legendary.json"
-import mythical from "../games/spirit-force-arena/classes/mythical.json"
-import godlike from "../games/spirit-force-arena/classes/godlike.json"
-import mapped_value from "../games/spirit-force-arena/helpers/mapped_value.json"
-import hp from "../games/spirit-force-arena/traits/hp.json"
-import ap from "../games/spirit-force-arena/traits/ap.json"
-import ads_view from "../games/spirit-force-arena/traits/ads_view.json"
-import luck from "../games/spirit-force-arena/traits/luck.json"
-import wearables from "../games/spirit-force-arena/wearables/wearables.json"
-import weapons from "../games/spirit-force-arena/wearables/weapons.json"
-import { evaluateClass, evaluateTrait, getJsonLogicInstance } from "./helpers"
-import { RulesLogic } from "json-logic-js"
-import { SfaClasses } from "../enums/spirit-force-arena"
+import {
+  SfaMaxTraits,
+  SfaMinTraits,
+  SfaTraits,
+  MappedTraits,
+  SfaWearable,
+} from "types/spirit-force-arena";
+import * as g from "types/gotchi";
+import min_traits from "../games/spirit-force-arena/traits/min_traits.json";
+import max_traits from "../games/spirit-force-arena/traits/max_traits.json";
+import apprentice from "../games/spirit-force-arena/classes/apprentice.json";
+import common from "../games/spirit-force-arena/classes/common.json";
+import uncommon from "../games/spirit-force-arena/classes/uncommon.json";
+import rare from "../games/spirit-force-arena/classes/rare.json";
+import legendary from "../games/spirit-force-arena/classes/legendary.json";
+import mythical from "../games/spirit-force-arena/classes/mythical.json";
+import godlike from "../games/spirit-force-arena/classes/godlike.json";
+import mapped_value from "../games/spirit-force-arena/helpers/mapped_value.json";
+import hp from "../games/spirit-force-arena/traits/hp.json";
+import ap from "../games/spirit-force-arena/traits/ap.json";
+import ads_view from "../games/spirit-force-arena/traits/ads_view.json";
+import luck from "../games/spirit-force-arena/traits/luck.json";
+import melee_damage from "../games/spirit-force-arena/traits/melee_damage.json";
+import ranged_damage from "../games/spirit-force-arena/traits/ranged_damage.json";
+import wearables from "../games/spirit-force-arena/wearables/wearables.json";
+import { evaluateClass, evaluateTrait, getJsonLogicInstance } from "./helpers";
+import { RulesLogic } from "json-logic-js";
+import { SfaClasses } from "../enums/spirit-force-arena";
 
 function getTraitsMinValues(): SfaMinTraits {
   return min_traits;
@@ -124,79 +33,57 @@ function getTraitsMinValues(): SfaMinTraits {
 
 function getTraitsMaxValues(className: SfaClasses): SfaMaxTraits {
   if (max_traits[className]) {
-    return max_traits[className]
+    return max_traits[className];
   }
-  return max_traits[SfaClasses.DIVINE]
+  return max_traits[SfaClasses.DIVINE];
 }
 
-function getGotchiClass(gotchi: Gotchi): SfaClasses {
-  if (evaluateClass(gotchi.traits, apprentice as RulesLogic)) {
-    return SfaClasses.APPRENTICE;
-  }
-  if (evaluateClass(gotchi.traits, common as RulesLogic)) {
-    return SfaClasses.COMMON;
-  }
-  if (evaluateClass(gotchi.traits, uncommon as RulesLogic)) {
-    return SfaClasses.UNCOMMON;
-  }
-  if (evaluateClass(gotchi.traits, rare as RulesLogic)) {
-    return SfaClasses.RARE;
-  }
-  if (evaluateClass(gotchi.traits, legendary as RulesLogic)) {
-    return SfaClasses.LEGENDARY;
-  }
-  if (evaluateClass(gotchi.traits, mythical as RulesLogic)) {
-    return SfaClasses.MYTHICAL;
-  }
-  if (evaluateClass(gotchi.traits, godlike as RulesLogic)) {
-    return SfaClasses.GODLIKE;
-  }
-  return SfaClasses.DIVINE
-}
-
-
-export function createSpiritForceArenaGotchi(gotchi: Gotchi): SpiritForceArenaGotchi {
+export function createSpiritForceArenaGotchi(
+  gotchi: g.Gotchi
+): SpiritForceArenaGotchi {
   const spiritForceArenaGotchi = new SpiritForceArenaGotchi(gotchi);
-  console.log(spiritForceArenaGotchi);
   return spiritForceArenaGotchi;
 }
 
 export class SpiritForceArenaGotchi {
-
+  id: string;
   className: SfaClasses;
-  traits: SfaTraits & SfaMinTraits & SfaMaxTraits;
+  traits: SfaTraits;
   mappedTraits: MappedTraits;
-  rightHand: SpiritForceArenaWeapon | null;
-  leftHand: SpiritForceArenaWeapon | null;
-  meleeWeapon: SpiritForceArenaWeapon | null;
-  rangedWeapon: SpiritForceArenaWeapon | null;
-  grenadeWeapon: SpiritForceArenaWeapon | null;
+  wearables: SfaWearable[];
+  meleeWeapon: SfaWearable | null;
+  rangedWeapon: SfaWearable | null;
+  grenadeWeapon: SfaWearable | null;
 
-  constructor(gotchi: Gotchi) {
-    this.className = getGotchiClass(gotchi);
+  constructor(gotchi: g.Gotchi) {
+    // First we calculate the class of the gotchi, based on BRS
+    this.className = this.getGotchiClass(gotchi);
+    this.id = gotchi.id;
+    // We set up all traits to 0 or min value.
     this.traits = {
-      hp: 0,
-      ap: 0,
-      hp_regen: 0,
-      ap_regen: 0,
-      melee_damage: 0,
-      ranged_damage: 0,
-      ads_view: 0,
-      luck: 0,  
-      stealth: 0,
-      critical_chance: 0,
-      armor: 0,
-      blocking_strength: 0,
+      hp: min_traits.min_hp,
+      ap: min_traits.min_ap,
+      hp_regen: min_traits.min_hp_regen,
+      ap_regen: min_traits.min_ap_regen,
+      melee_damage: min_traits.min_melee_damage,
+      melee_dps: 0,
+      ranged_damage: min_traits.min_ranged_damage,
+      ranged_dps: 0,
+      ads_view: min_traits.min_ads_view,
+      luck: min_traits.min_luck,
+      stealth: min_traits.min_stealth,
+      critical_chance: min_traits.min_critical_chance,
+      armor: min_traits.min_passive_damage_reduction,
+      blocking_strength: min_traits.min_active_damage_reduction,
       grenade_dmg: 0,
       grenade_type: null,
-      critical_damages_multiplier: 0,
+      critical_damages_multiplier: min_traits.min_critical_damages_multiplier,
       movement_speed: 0,
       evasion: 0,
       falloff: 0,
       damage_to_npc: 0,
-      ...getTraitsMaxValues(this.className),
-      ...getTraitsMinValues()
-    }
+    };
+    // Mapped traits are normalized versions of the original traits
     this.mappedTraits = {
       bNrg: mappedTrait(gotchi.traits.nrg),
       bAgg: mappedTrait(gotchi.traits.agg),
@@ -204,191 +91,446 @@ export class SpiritForceArenaGotchi {
       bBrn: mappedTrait(gotchi.traits.brn),
       bEys: mappedTrait(gotchi.traits.eys),
       bEyc: mappedTrait(gotchi.traits.eyc),
-    }
+    };
 
-    this.traits.hp = evaluateTrait(this.mappedTraits, hp as RulesLogic)
-    this.traits.ap = evaluateTrait(this.mappedTraits, ap as RulesLogic)
-    this.traits.ads_view = evaluateTrait(this.mappedTraits, ads_view as RulesLogic)
-    this.traits.luck = evaluateTrait(this.mappedTraits, luck as RulesLogic)
+    // For the game traits that uses mapped traits for calculation we apply the logic in the rules.
+    this.traits.hp += evaluateTrait(this.mappedTraits, hp as RulesLogic);
+    this.traits.ap += evaluateTrait(this.mappedTraits, ap as RulesLogic);
+    this.traits.ads_view += evaluateTrait(
+      this.mappedTraits,
+      ads_view as RulesLogic
+    );
+    this.traits.luck += evaluateTrait(this.mappedTraits, luck as RulesLogic);
+    this.traits.melee_damage += evaluateTrait(
+      this.mappedTraits,
+      melee_damage as RulesLogic
+    );
+    this.traits.ranged_damage += evaluateTrait(
+      this.mappedTraits,
+      ranged_damage as RulesLogic
+    );
 
-    this.rightHand = null;
-    this.leftHand = null;
+    // Now we need to handle all wearable modifiers, especially weapons
+    // First we get all the wearables from the gotchi and set uop our wearable property.
+    this.wearables = gotchi.wearables.map(
+      (id) =>
+        wearables.find(
+          (wearable) => wearable.id === id.toString()
+        ) as SfaWearable
+    );
 
-    if (gotchi.wearables.length > 0) {
-      if (gotchi.wearables[4] !== 0) {
-        const weapon = weapons.find(weapon => weapon.id === gotchi.wearables[4].toString()) as SpiritForceArenaWeapon;
-        if (weapon) {
-          this.rightHand = weapon;
-        }
-      }
-      if (gotchi.wearables[5] !== 0) {
-        const weapon = weapons.find(weapon => weapon.id === gotchi.wearables[5].toString()) as SpiritForceArenaWeapon;
-        if (weapon) {
-          this.leftHand = weapon;
-        }
-      }
-    }
-
-    // If both hands are ampty we put a melee on the right and a ranged on the left 
-    if (this.rightHand === null && this.leftHand === null) {
-      this.rightHand = createDefaultMeleeWeapon();
-      this.leftHand = createDefaultRangedWeapon();
-    }
-
-    // If only one hand is empty we put a weapon based on the category of the other hand.
-    if (this.rightHand === null && this.leftHand !== null) {
-      this.rightHand = this.getDefaultWeapons(this.leftHand);
-    }
-    if (this.leftHand === null && this.rightHand !== null) {
-      this.leftHand = this.getDefaultWeapons(this.rightHand);
-    }
-
+    // This function will make sure both hands got a wearable using default ones if needed.
+    this.handleHandsWearables();
     // Now we are sure both hands got something we will assign the best weapon of each category.
     this.meleeWeapon = this.getMeleeWeapon();
     this.rangedWeapon = this.getRangedWeapon();
     this.grenadeWeapon = this.getGrenadeWeapon();
 
-    // And now we can compute damage....
-    //this.traits.melee_damage = 
+    // Now we apply the wearable modifiers to the game traits.
+    console.log(this.traits.melee_damage);
+    console.log(this.traits.ranged_damage);
+    this.applyWearableModifiersToGameTraits();
+
+    // Finally we compute the min and max traits based on the game traits.  
+    this.computeMinMaxTraits();
   }
 
-  protected getDefaultWeapons(otherWeapon: SpiritForceArenaWeapon): SpiritForceArenaWeapon {
-    if (otherWeapon.category === 'melee') {
+  protected applyWearableModifiersToGameTraits() {
+    if (this.wearables[g.body] && this.wearables[g.body].gameTraitsModifiers) {
+      this.applyWearableTrait(this.wearables[g.body]);
+    }
+
+    if (this.wearables[g.head] && this.wearables[g.head].gameTraitsModifiers) {
+      this.applyWearableTrait(this.wearables[g.head]);
+    }
+
+    if (this.wearables[g.eyes] && this.wearables[g.eyes].gameTraitsModifiers) {
+      this.applyWearableTrait(this.wearables[g.eyes]);
+    }
+
+    if (this.wearables[g.face] && this.wearables[g.face].gameTraitsModifiers) {
+      this.applyWearableTrait(this.wearables[g.face]);
+    }
+    if (this.wearables[g.pet] && this.wearables[g.pet].gameTraitsModifiers) {
+      this.applyWearableTrait(this.wearables[g.pet]);
+    }
+
+    if (this.rangedWeapon && this.rangedWeapon.attack_rate) {
+      this.applyWearableTrait(this.rangedWeapon);
+      this.traits.ranged_dps = Math.round(this.rangedWeapon.attack_rate * this.traits.ranged_damage * 10) / 10;
+    }
+    if (this.meleeWeapon && this.meleeWeapon.attack_rate) {
+      this.applyWearableTrait(this.meleeWeapon);
+      this.traits.melee_dps = Math.round(this.meleeWeapon.attack_rate * this.traits.melee_damage * 10) / 10;
+    }
+    if (this.grenadeWeapon) {
+      this.applyWearableTrait(this.grenadeWeapon);
+    }
+  }
+  
+  // TODO: This is a bit of a mess, we should refactor it.
+  protected applyWearableTrait(wearable: SfaWearable) {  
+    switch (wearable.gameTraitsModifiers.traitName) {
+      case "hp":
+        this.traits.hp = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "ap":
+        this.traits.ap = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "hp_regen":
+        this.traits.hp_regen = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "ap_regen":
+        this.traits.ap_regen = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "melee_damage":
+        this.traits.melee_damage = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "ranged_damage":
+        this.traits.ranged_damage = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "falloff":
+        this.traits.falloff = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "armor":
+        this.traits.armor = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "blocking_strength":
+        this.traits.blocking_strength = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "grenade_dmg":
+        this.traits.grenade_dmg = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "critical_chance":
+        this.traits.critical_chance = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "critical_damages_multiplier":
+        this.traits.critical_damages_multiplier = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "ads_view":
+        this.traits.ads_view = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "damage_to_npc":
+        this.traits.damage_to_npc = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "movement_speed":
+        this.traits.movement_speed = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "evasion":
+        this.traits.evasion = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "luck":
+        this.traits.luck = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+      case "stealth":
+        this.traits.stealth = evaluateTrait(
+          this.traits,
+          wearable.gameTraitsModifiers.value
+        ) as number;
+        break;
+    }
+  }
+
+  protected handleHandsWearables() {
+    console.log(this.wearables);
+    if (
+      !this.wearables[g.righthand] &&
+      !this.wearables[g.lefthand]
+    ) {
+      this.wearables[g.righthand] = createDefaultMeleeWeapon();
+      this.wearables[g.lefthand] = createDefaultRangedWeapon();
+    }
+
+    // If only one hand is empty we put a weapon based on the category of the other hand.
+    if (
+      !this.wearables[g.righthand] &&
+      this.wearables[g.lefthand]
+    ) {
+      this.wearables[g.righthand] = this.getDefaultWeapons(
+        this.wearables[g.lefthand]
+      );
+    }
+    if (
+      !this.wearables[g.lefthand] &&
+      this.wearables[g.righthand]
+    ) {
+      this.wearables[g.lefthand] = this.getDefaultWeapons(
+        this.wearables[g.righthand]
+      );
+    }
+    console.log(this.wearables);
+  }
+
+  // If one hand is empty we put a weapon based on the category of the other hand.protected function 
+  protected getDefaultWeapons(otherWeapon: SfaWearable): SfaWearable {
+    if (otherWeapon.category === "melee") {
       return createDefaultRangedWeapon();
     } else {
       return createDefaultMeleeWeapon();
     }
   }
 
-  protected getMeleeWeapon(): SpiritForceArenaWeapon | null {
-    return this.getWeapon('melee');
+  protected getMeleeWeapon(): SfaWearable | null {
+    return this.getWeapon("melee");
   }
 
-  protected getRangedWeapon(): SpiritForceArenaWeapon | null {
-    return this.getWeapon('ranged');
+  protected getRangedWeapon(): SfaWearable | null {
+    return this.getWeapon("ranged");
   }
 
-  protected getGrenadeWeapon(): SpiritForceArenaWeapon | null {
-    return this.getWeapon('grenade');
+  protected getGrenadeWeapon(): SfaWearable | null {
+    return this.getWeapon("grenade");
   }
 
-  protected getWeapon(category: 'melee' | 'ranged' | 'grenade'): SpiritForceArenaWeapon | null {
+  protected getWeapon(
+    category: "melee" | "ranged" | "grenade"
+  ): SfaWearable | null {
     // https://www.notion.so/SFA-Weapons-Implementation-f9bfa9e9ad084d28ab5e81b0f086cfee?pvs=4#afaeecb04b6449d1a72f15e4c74d908c
     // Basically if you have 2 weapons of the same category only the best one is used.
-    if (this.rightHand?.category === category && this.leftHand?.category !== category) {
-      return this.rightHand;
-    } else if (this.leftHand?.category === category && this.rightHand?.category !== category) {
-      return this.leftHand;
-    } else if (this.rightHand?.category === category && this.leftHand?.category === category) {
-      const rightInt = convertWeaponTypeToNumber(this.rightHand.type);
-      const leftInt = convertWeaponTypeToNumber(this.leftHand.type);
+    if (
+      this.wearables[g.righthand]?.category === category &&
+      this.wearables[g.lefthand]?.category !== category
+    ) {
+      return this.wearables[g.righthand];
+    } else if (
+      this.wearables[g.lefthand]?.category === category &&
+      this.wearables[g.righthand]?.category !== category
+    ) {
+      return this.wearables[g.lefthand];
+    } else if (
+      this.wearables[g.righthand]?.category === category &&
+      this.wearables[g.lefthand]?.category === category
+    ) {
+      const rightInt = convertWeaponTypeToNumber(
+        this.wearables[g.righthand]?.type ?? ""
+      );
+      const leftInt = convertWeaponTypeToNumber(
+        this.wearables[g.lefthand]?.type ?? ""
+      );
       if (rightInt >= leftInt) {
-        return this.rightHand;
+        return this.wearables[g.righthand];
       } else {
-        return this.leftHand;
+        return this.wearables[g.lefthand];
       }
     }
     return null;
   }
 
-  
+  protected computeMinMaxTraits() {
+    this.traits.hp = Math.round(this.getHp());
+    this.traits.ap = Math.round(this.getAp());
+    this.traits.hp_regen = Math.round(this.getHpRegen());
+    this.traits.ap_regen = Math.round(this.getApRegen());
+    this.traits.ads_view = Math.round(this.getAdsView());
+    this.traits.luck = Math.round(this.getLuck() * 100) / 100;
+    this.traits.stealth = Math.round(this.getStealth() * 100) / 100;
+    this.traits.critical_chance = Math.round(this.getCriticalChance() * 100);
+    this.traits.armor = Math.round(this.getPassiveDamageReduction() * 100);
+    this.traits.blocking_strength = Math.round(this.getActiveDamageReduction() * 100);
+    this.traits.critical_damages_multiplier = this.getCriticalDamagesMultiplier();
+    this.traits.movement_speed = Math.round(this.getMovementSpeed() * 100);
+    this.traits.evasion = this.getEvasion();
+    this.traits.damage_to_npc = this.getDamageToNpc();
+    this.traits.melee_damage = Math.round(this.getMeleeDamage() * 100) / 100;
+    this.traits.ranged_damage = Math.round(this.getRangedDamage() * 100) / 100;
+    this.traits.grenade_dmg = Math.round(this.getGrenadeDamage() * 100) / 100;
+    this.traits.falloff = this.getFallOff();
+  }
+
   getHp(): number {
-    return this.getMinMaxValue(this.traits.hp, this.traits.min_hp, this.traits.max_hp);
+    return this.getMinMaxValue(
+      this.traits.hp,
+      min_traits.min_hp,
+      max_traits[this.className].max_hp
+    );
   }
 
   getAp(): number {
-    return this.getMinMaxValue(this.traits.ap, this.traits.min_ap, this.traits.max_ap);
+    return this.getMinMaxValue(
+      this.traits.ap,
+      min_traits.min_ap,
+      max_traits[this.className].max_ap
+    );
   }
 
   getAdsView(): number {
-    return this.getMinMaxValue(this.traits.ads_view, this.traits.min_ads_view, this.traits.max_ads_view);
+    return this.getMinMaxValue(
+      this.traits.ads_view,
+      min_traits.min_ads_view,
+      max_traits[this.className].max_ads_view
+    );
   }
 
+  // Based on traits value gisplayed ion game, the max cap is not applied currently.
   getLuck(): number {
-    return this.getMinMaxValue(this.traits.luck, this.traits.min_luck, this.traits.max_luck);
+    return this.getMinMaxValue(
+      this.traits.luck,
+      min_traits.min_luck,
+      99999
+    );
   }
 
   getStealth(): number {
-    return this.getMinMaxValue(this.traits.stealth, this.traits.min_stealth, this.traits.max_stealth);
+    return this.getMinMaxValue(
+      this.traits.stealth,
+      min_traits.min_stealth,
+      max_traits[this.className].max_stealth
+    );
   }
 
   getCriticalChance(): number {
-    return this.getMinMaxValue(this.traits.critical_chance, this.traits.min_critical_chance, this.traits.max_critical_chance);
+    return this.getMinMaxValue(
+      this.traits.critical_chance,
+      min_traits.min_critical_chance,
+      max_traits[this.className].max_critical_chance
+    );
   }
 
   getHpRegen(): number {
-    return this.getMinMaxValue(this.traits.hp_regen, this.traits.min_hp_regen, this.traits.max_hp_regen);
+    return this.getMinMaxValue(
+      this.traits.hp_regen,
+      min_traits.min_hp_regen,
+      max_traits[this.className].max_hp_regen
+    );
   }
 
   getApRegen(): number {
-    return this.getMinMaxValue(this.traits.ap_regen, this.traits.min_ap_regen, this.traits.max_ap_regen);
+    return this.getMinMaxValue(
+      this.traits.ap_regen,
+      min_traits.min_ap_regen,
+      max_traits[this.className].max_ap_regen
+    );
   }
 
   getActiveDamageReduction(): number {
-    return this.getMinMaxValue(this.traits.blocking_strength, this.traits.min_active_damage_reduction, this.traits.max_active_damage_reduction);
+    return this.getMinMaxValue(
+      this.traits.blocking_strength,
+      min_traits.min_active_damage_reduction,
+      max_traits[this.className].max_active_damage_reduction
+    );
   }
 
   getPassiveDamageReduction(): number {
-    return this.getMinMaxValue(this.traits.armor, this.traits.min_passive_damage_reduction, this.traits.max_passive_damage_reduction);
+    return this.getMinMaxValue(
+      this.traits.armor,
+      min_traits.min_passive_damage_reduction,
+      max_traits[this.className].max_passive_damage_reduction
+    );
   }
 
   getCriticalDamagesMultiplier(): number {
-    return this.getMinMaxValue(this.traits.critical_damages_multiplier, this.traits.min_critical_damages_multiplier, this.traits.max_critical_damages_multiplier);
+    return this.getMinMaxValue(
+      this.traits.critical_damages_multiplier,
+      min_traits.min_critical_damages_multiplier,
+      max_traits[this.className].max_critical_damages_multiplier
+    );
   }
 
   getMovementSpeed(): number {
-    return this.getMinMaxValue(this.traits.movement_speed, this.traits.min_movement_speed, this.traits.max_movement_speed);
+    return this.getMinMaxValue(
+      this.traits.movement_speed,
+      min_traits.min_movement_speed,
+      max_traits[this.className].max_movement_speed
+    );
   }
 
   getEvasion(): number {
-    return this.getMinMaxValue(this.traits.evasion, this.traits.min_evasion, this.traits.max_evasion);
+    return this.getMinMaxValue(
+      this.traits.evasion,
+      min_traits.min_evasion,
+      max_traits[this.className].max_evasion
+    );
   }
 
   getDamageToNpc(): number {
-    return this.getMinMaxValue(this.traits.damage_to_npc, this.traits.min_damage_to_npc, this.traits.max_damage_to_npc);
+    return this.getMinMaxValue(
+      this.traits.damage_to_npc,
+      min_traits.min_damage_to_npc,
+      max_traits[this.className].max_damage_to_npc
+    );
   }
 
-  // getMeleeBasicBoost(): number {
-  //   return this.getMinMaxValue(this.traits.melee_basic_boost, this.traits.min_melee_basic_boost, this.traits.max_melee_basic_boost);
-  // }
+  getMeleeDamage(): number {
+    return this.getMinMaxValue(
+      this.traits.melee_damage,
+      min_traits.min_melee_damage,
+      99999
+    );
+  }
 
-  // getMeleeLongRangeBoost(): number {
-  //   return this.getMinMaxValue(this.traits.melee_long_range_boost, this.traits.min_melee_long_range_boost, this.traits.max_melee_long_range_boost);
-  // }
+  getRangedDamage(): number {
+    return this.getMinMaxValue(
+      this.traits.ranged_damage,
+      min_traits.min_ranged_damage,
+      99999
+    );
+  }
 
-  // getMeleeHighRateBoost(): number {
-  //   return this.getMinMaxValue(this.traits.melee_high_rate_boost, this.traits.min_melee_high_rate_boost, this.traits.max_melee_high_rate_boost);
-  // }
+  getGrenadeDamage(): number {
+    return this.traits.grenade_dmg ?? 0;
+  }
 
-  // getMeleePierceBoost(): number {
-  //   return this.getMinMaxValue(this.traits.melee_pierce_boost, this.traits.min_melee_pierce_boost, this.traits.max_melee_pierce_boost);
-  // }
+  // GSheet specified a lot of cases where it should be 0. But in-game value is always 1.
+  getFallOff(): number {
+    return 1;
+  }
 
-  // getRangedBasicBoost(): number {
-  //   return this.getMinMaxValue(this.traits.ranged_basic_boost, this.traits.min_ranged_basic_boost, this.traits.max_ranged_basic_boost);
-  // }
-
-  // getRangedFallOffBoost(): number {
-  //   return this.getMinMaxValue(this.traits.ranged_fall_off_boost, this.traits.min_ranged_fall_off_boost, this.traits.max_ranged_fall_off_boost);
-  // }
-
-  // getRangedMagicalBoost(): number {
-  //   return this.getMinMaxValue(this.traits.ranged_magical_boost, this.traits.min_ranged_magical_boost, this.traits.max_ranged_magical_boost);
-  // }
-
-  // getRangedSniperBoost(): number {
-  //   return this.getMinMaxValue(this.traits.ranged_sniper_boost, this.traits.min_ranged_sniper_boost, this.traits.max_ranged_sniper_boost);
-  // }
-
-  // getBasicGrenadeBoost(): number {
-  //   return this.getMinMaxValue(this.traits.basic_grenade_boost, this.traits.min_basic_grenade_boost, this.traits.max_basic_grenade_boost);
-  // }
-
-  // getImpactGrenadeBoost(): number {
-  //   return this.getMinMaxValue(this.traits.impact_grenade_boost, this.traits.min_impact_grenade_boost, this.traits.max_impact_grenade_boost);
-  // }
-
-  protected getMinMaxValue(value: number | null, min: number, max: number): number {
+  protected getMinMaxValue(
+    value: number | null,
+    min: number,
+    max: number
+  ): number {
     if (value === null) {
       return min;
     }
@@ -400,74 +542,91 @@ export class SpiritForceArenaGotchi {
     }
     return value;
   }
+
+  protected getGotchiClass(gotchi: g.Gotchi): SfaClasses {
+    if (evaluateClass(gotchi.traits, apprentice as RulesLogic)) {
+      return SfaClasses.APPRENTICE;
+    }
+    if (evaluateClass(gotchi.traits, common as RulesLogic)) {
+      return SfaClasses.COMMON;
+    }
+    if (evaluateClass(gotchi.traits, uncommon as RulesLogic)) {
+      return SfaClasses.UNCOMMON;
+    }
+    if (evaluateClass(gotchi.traits, rare as RulesLogic)) {
+      return SfaClasses.RARE;
+    }
+    if (evaluateClass(gotchi.traits, legendary as RulesLogic)) {
+      return SfaClasses.LEGENDARY;
+    }
+    if (evaluateClass(gotchi.traits, mythical as RulesLogic)) {
+      return SfaClasses.MYTHICAL;
+    }
+    if (evaluateClass(gotchi.traits, godlike as RulesLogic)) {
+      return SfaClasses.GODLIKE;
+    }
+    return SfaClasses.DIVINE;
+  }
+ 
 }
 
 function mappedTrait(originalValue: number) {
-  const jsl = getJsonLogicInstance()
-  const value = { value: originalValue }
-  return jsl.apply(mapped_value as RulesLogic, value) as number
+  const jsl = getJsonLogicInstance();
+  const value = { value: originalValue };
+  return jsl.apply(mapped_value as RulesLogic, value) as number;
 }
 
-function createDefaultMeleeWeapon(): SpiritForceArenaWeapon {
+function createDefaultMeleeWeapon(): SfaWearable {
   return {
-    id: "0",
+    id: "9999",
     rarity: 0,
     name: "Default weapon",
-    type: 'melee_basic',
-    category: 'melee',
-    traits: {
-      damage: 150,
-      attack_speed: 2,
-      armor_piercing: 1,
-      range_multiplier: 1,
-    }
-  }
+    type: "melee_basic",
+    category: "melee",
+    attack_rate: 2,
+    gameTraitsModifiers: {
+      traitName: "melee_damage",
+      value: { "+": [{ "*": [{ var: "melee_damage" }, 150] }, 150] },
+    },
+  };
 }
 
-function createDefaultRangedWeapon(): SpiritForceArenaWeapon {
+function createDefaultRangedWeapon(): SfaWearable {
   return {
-    id: "0",
+    id: "9998",
     rarity: 0,
     name: "Default weapon",
-    type: 'ranged_basic',
-    category: 'ranged',
-    traits: {
-      damage: 66,
-      attack_speed: 3,
-      aim_fov: 30,
-      fall_off: 0,
-      max_dispersion: 20,
-      min_dispersion: 0.4,
-      dispersion_increase_per_shot: 1,
-      dispersion_decrease_rate: 4,
-      dispersion_ads: 2,
-      recoil_strength: 50,
-      recoil_decrease_rate: 2
-    }
-  }
+    type: "ranged_basic",
+    category: "ranged",
+    attack_rate: 3,
+    gameTraitsModifiers: {
+      traitName: "ranged_damage",
+      value: { "+": [{ "*": [{ var: "ranged_damage" }, 66] }, 66] },
+    },
+  };
 }
 
 function convertWeaponTypeToNumber(type: string): number {
-  switch(type) {
-    case 'melee_basic':
+  switch (type) {
+    case "melee_basic":
       return 0;
-    case 'melee_long_range':
+    case "melee_long_range":
       return 1;
-    case 'melee_pierce':
+    case "melee_pierce":
       return 2;
-    case 'melee_high_rate':
+    case "melee_high_rate":
       return 3;
-    case 'ranged_basic':
+    case "ranged_basic":
       return 4;
-    case 'ranged_fall_off':
+    case "ranged_fall_off":
       return 5;
-    case 'ranged_magical':
+    case "ranged_magical":
       return 6;
-    case 'ranged_sniper':
+    case "ranged_sniper":
       return 7;
-    case 'grenade_basic':
+    case "grenade_basic":
       return 8;
-    case 'grenade_impact':
+    case "grenade_impact":
       return 9;
     default:
       return 0;

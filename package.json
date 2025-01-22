@@ -25,7 +25,8 @@
     "sfa:weapons:generate": "tsx src/scripts/sfa/generateWeaponsFile.ts",
     "sfa:wearables:generate": "tsx src/scripts/sfa/generateWearablesFile.ts",
     "tsc": "rimraf tsbuild && tsc",
-    "tsx": "tsx"
+    "tsx": "tsx",
+    "sfa:test": "tsx src/scripts/tests/sfa.ts"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,22 @@
+name,type,rarity,damage,radius_multiplier,can_bounce
+Uranium Rod,Impact Grenade,Godlike,750,0.1,FALSE
+Milkshake,Impact Grenade,Mythical,650,0.1,FALSE
+Link Bubbly,Impact Grenade,Legendary,550,0.1,FALSE
+Sushi Piece,Basic Grenade,Legendary,733.3333333,1,TRUE
+Water Jug,Impact Grenade,Legendary,550,0.1,FALSE
+Baby Bottle,Impact Grenade,Legendary,550,0.1,FALSE
+Martini,Impact Grenade,Legendary,550,0.1,FALSE
+Wine,Impact Grenade,Rare,450,0.1,FALSE
+DAO Egg,Basic Grenade,Rare,600,1,TRUE
+Bedtime Milk,Impact Grenade,Rare,450,0.1,FALSE
+Lil Pump Drank,Impact Grenade,Rare,450,0.1,FALSE
+Coconut,Impact Grenade,Rare,450,0.1,FALSE
+Candy Jaar,Basic Grenade,Rare,600,1,TRUE
+MK2 Grenade,Basic Grenade,Common,333.3333333,1,TRUE
+Gotchi Mug,Impact Grenade,Common,250,0.1,FALSE
+Basketball,Impact Grenade,Common,250,0.1,FALSE
+GM Seeds,Basic Grenade,Common,333.3333333,1,TRUE
+M67 Grenade,Basic Grenade,Uncommon,466.6666667,1,TRUE
+Water bottle,Impact Grenade,Uncommon,350,0.1,FALSE
+Apple Juice,Impact Grenade,Uncommon,350,0.1,FALSE
+Up Arrow,Basic Grenade,Uncommon,466.6666667,1,TRUE

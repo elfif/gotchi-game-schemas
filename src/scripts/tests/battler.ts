@@ -23,15 +23,15 @@ const gotchi: Gotchi = {
   id: "1",
   name: "test",
   traits: {
-    brs: 545,
-    agg: 10,
-    nrg: 11,
-    spk: 12,
-    brn: 13,
-    eys: 14,
-    eyc: 15,
+    brs: 612,
+    nrg: 98,
+    agg: 106,
+    spk: 89,
+    brn: 106,
+    eys: 17,
+    eyc: 20,
   },
-  wearables: [54, 295, 214, 309, 75, 79, 151],
+  wearables: [105, 295, 66, 61, 65, 201],
 };
 
 function main() {

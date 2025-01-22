@@ -1,0 +1,284 @@
+id,name,slot,type,stat,rarity,value
+2,Camo Pants,body,Armor,Passive Damage Reduction,Common,0.03
+5,Snow Camo Pants,body,Armor,Passive Damage Reduction,Uncommon,0.06
+8,Marine Jacket,body,Warrior,HP Capacity,Rare,1500
+11,Link Mess Dress,body,Warrior,HP Capacity,Legendary,2000
+15,Red Plaid,body,Dress Shirt,HP Regen,Mythical,15
+16,Blue Plaid,body,Dress Shirt,HP Regen,Godlike,18
+19,Aave Hero Shirt,body,Warrior,HP Capacity,Common,500
+22,Captain Aave Suit,body,Armor,Passive Damage Reduction,Uncommon,0.06
+25,Thaave Suit,body,Armor,Passive Damage Reduction,Rare,0.09
+28,Marc Outfit,body,Dress Shirt,HP Regen,Legendary,12
+31,Jordan Suit,body,Suit,AP Regen,Mythical,10
+34,Stani Vest,body,Warrior,HP Capacity,Godlike,3000
+37,ETH Tshirt,body,Comfy,Evasion,Common,0.05
+43,Eagle Armor,body,Armor,Passive Damage Reduction,Rare,0.09
+46,Halfrekt Shirt,body,Comfy,Evasion,Legendary,0.2
+50,GldnXross Robe,body,Mage Attire,AP Capacity,Mythical,125
+54,Llamacorn Shirt,body,Comfy,Evasion,Godlike,0.3
+56,Aagent Shirt,body,Comfy,Evasion,Rare,0.15
+68,Farmer Jeans,body,Pants,AP Capacity,Common,25
+74,Jaay Suit,body,Suit,AP Regen,Mythical,10
+78,Black Jeans,body,Pants,AP Capacity,Uncommon,50
+81,Sushi Coat,body,Worker,Critical Damages Multiplier,Rare,0.6
+85,Gentleman Coat,body,Dress Shirt,HP Regen,Legendary,12
+88,Miner Jeans,body,Pants,AP Capacity,Uncommon,50
+91,Pajama Shirt,body,Comfy,Evasion,Uncommon,0.1
+95,Track Shorts,body,Mage / RPG / Sports,Movement Speed,Uncommon,0.15
+98,Day Dress,body,Dress,AP Capacity,Legendary,100
+102,Witchy Cloak,body,Mage Attire,AP Capacity,Legendary,100
+105,Portal Mage Armor,body,Armor,Passive Damage Reduction,Legendary,0.12
+109,Rasta Shirt,body,Dress Shirt,HP Regen,Uncommon,6
+112,Hazmat Suit,body,Worker,Critical Damages Multiplier,Legendary,0.8
+114,Red Hawaiian Shirt,body,Comfy,Evasion,Mythical,0.25
+115,Blue Hawaiian Shirt,body,Comfy,Evasion,Legendary,0.2
+125,Track Suit,body,Mage / RPG / Sports,Movement Speed,Legendary,0.3
+132,Dragon Wings,body,Mage / RPG / Sports,Movement Speed,Rare,0.225
+135,Polygon Shirt,body,Comfy,Evasion,Uncommon,0.1
+138,Snapshot Shirt,body,Comfy,Evasion,Uncommon,0.1
+143,Gold Necklace,body,Jewelry,Luck,Legendary,0.3
+150,Royal Robes,body,Mage Attire,AP Capacity,Mythical,125
+160,Lil Pump Threads,body,Comfy,Evasion,Mythical,0.25
+200,Steampunk trousers,body,Pants,AP Capacity,Uncommon,50
+203,Gamer jacket,body,Comfy,Evasion,Rare,0.15
+207,Biker Jacket,body,Warrior,HP Capacity,Uncommon,1000
+213,H4xx0r Shirt,body,Warrior,HP Capacity,Legendary,2000
+220,Punk Shirt,body,Comfy,Evasion,Legendary,0.2
+222,Pirate Coat,body,Warrior,HP Capacity,Uncommon,1000
+227,23 Jersey,body,Mage / RPG / Sports,Movement Speed,Rare,0.225
+230,Wraangler Jeans,body,Pants,AP Capacity,Common,25
+231,Comfy Poncho,body,Comfy,Evasion,Uncommon,0.1
+234,Shaaman Poncho,body,Mage Attire,AP Capacity,Mythical,125
+241,WGMI Shirt,body,Worker,Critical Damages Multiplier,Rare,0.6
+244,V-Neck Shirt,body,Comfy,Evasion,Rare,0.15
+248,Up Only Shirt,body,Comfy,Evasion,Uncommon,0.1
+250,CoinGecko Tee,body,Comfy,Evasion,Rare,0.15
+253,Aastronaut Suit,body,Armor,Passive Damage Reduction,Common,0.03
+256,Lil Bubble Space Suit,body,Armor,Passive Damage Reduction,Legendary,0.12
+258,Taoist Robe,body,Mage Attire,AP Capacity,Godlike,150
+293,Leather Tunic,body,Warrior,HP Capacity,Common,500
+297,Animal Skins,body,Warrior,HP Capacity,Uncommon,1000
+303,Kimono,body,Dress,AP Capacity,Rare,75
+307,Fairy Wings,body,Mage / RPG / Sports,Movement Speed,Legendary,0.3
+310,Plate Armor,body,Armor,Passive Damage Reduction,Mythical,0.15
+314,Yoroi Armor,body,Armor,Passive Damage Reduction,Godlike,0.18
+350,Pixelcraft Tee,body,Comfy,Evasion,Common,0.05
+354,Alchemica Apron,body,Worker,Critical Damages Multiplier,Uncommon,0.4
+358,Flaming Apron,body,Worker,Critical Damages Multiplier,Legendary,0.8
+362,FAKE Shirt,body,Comfy,Evasion,Mythical,0.25
+366,Heavenly Robes,body,Mage Attire,AP Capacity,Godlike,150
+372,Party Dress,body,Dress,AP Capacity,Common,25
+373,Overalls,body,Pants,AP Capacity,Uncommon,50
+383,Sandbox Hoodie,body,Comfy,Evasion,Legendary,0.2
+14,Sergey Eyes,eyes,Other eyes,Critical Chance,Mythical,0.1
+36,ETH Logo Glasses,eyes,Other eyes,Critical Chance,Common,0.02
+49,Coderdan Shades,eyes,Other eyes,Critical Chance,Mythical,0.1
+53,All-Seeing Eyes,eyes,View Enhancer,ADS View,Godlike,0.6
+57,Aagent Shades,eyes,View Enhancer,ADS View,Rare,0.3
+66,Wizard Visor,eyes,View Enhancer,ADS View,Common,0.1
+73,Jaay Glasses,eyes,View Enhancer,ADS View,Mythical,0.5
+86,Monocle,eyes,View Enhancer,ADS View,Mythical,0.5
+117,Cool shades,eyes,View Enhancer,ADS View,Common,0.1
+159,Lil Pump Shades,eyes,View Enhancer,ADS View,Legendary,0.4
+199,Steampunk goggles,eyes,Other eyes,Critical Chance,Rare,0.06
+202,VR headset,eyes,Other eyes,Critical Chance,Mythical,0.1
+208,Aviators,eyes,View Enhancer,ADS View,Uncommon,0.2
+214,Matrix Eyes,eyes,View Enhancer,ADS View,Godlike,0.6
+215,Cyborg Eye,eyes,View Enhancer,ADS View,Legendary,0.4
+224,Pirate Patch,eyes,Other eyes,Critical Chance,Rare,0.06
+243,Tinted Shades,eyes,View Enhancer,ADS View,Rare,0.3
+246,APY Shades,eyes,Other eyes,Critical Chance,Uncommon,0.04
+249,Gecko Eyes,eyes,Other eyes,Critical Chance,Rare,0.06
+259,Bushy Eyebrows,eyes,Other eyes,Critical Chance,Godlike,0.12
+262,Radar Eyes,eyes,View Enhancer,ADS View,Mythical,0.5
+301,Alluring Eyes,eyes,Other eyes,Critical Chance,Rare,0.06
+351,3D Glasses,eyes,View Enhancer,ADS View,Common,0.1
+355,Safety Glasses,eyes,View Enhancer,ADS View,Rare,0.3
+359,Forge Goggles,eyes,Other eyes,Critical Chance,Legendary,0.08
+367,Eyes of Devotion,eyes,Other eyes,Critical Chance,Godlike,0.12
+377,Lick Eyes,eyes,View Enhancer,ADS View,Uncommon,0.2
+381,Voxel Eyes,eyes,Other eyes,Critical Chance,Legendary,0.08
+385,Block Scanners,eyes,View Enhancer,ADS View,Godlike,0.6
+13,Sergey Beard,face,Facial Hair / Mouth,HP Regen,Mythical,15
+18,Aave Hero Mask,face,Face accessory,AP Regen,Common,2
+55,Aagent Headset,face,Face accessory,AP Regen,Rare,6
+140,Elf Ears,face,Face accessory,AP Regen,Common,2
+146,Imperial Moustache,face,Small Facial Hair,Stealth,Common,0.15
+157,Lil Pump Goatee,face,Small Facial Hair,Stealth,Uncommon,0.3
+209,Horsehoe Mustache,face,Small Facial Hair,Stealth,Legendary,0.6
+216,Rainbow Vomit,face,Face accessory,AP Regen,Mythical,10
+219,Mutton Chops,face,Facial Hair / Mouth,HP Regen,Rare,9
+240,Headphones,face,Face accessory,AP Regen,Uncommon,4
+260,Beard of Wisdom,face,Facial Hair / Mouth,HP Regen,Godlike,18
+263,Signal Headset,face,Face accessory,AP Regen,Mythical,10
+295,Forked Beard,face,Facial Hair / Mouth,HP Regen,Common,3
+306,Flower Studs,face,Face accessory,AP Regen,Legendary,8
+356,Bandage,face,Face accessory,AP Regen,Uncommon,4
+368,Beard of Divinity,face,Facial Hair / Mouth,HP Regen,Godlike,18
+371,Plastic Earrings,face,Face accessory,AP Regen,Common,2
+378,Lick Tongue,face,Menacing,Damage to NPC,Rare,0.75
+382,GOAT-ee,face,Small Facial Hair,Stealth,Legendary,0.6
+384,Faangs,face,Menacing,Damage to NPC,Mythical,1.25
+3,MK2 Grenade,hands,Basic Grenade,Basic Grenade Boost,Common,0.667
+6,M67 Grenade,hands,Basic Grenade,Basic Grenade Boost,Uncommon,1.333
+9,Walkie Talkie,hands,Melee High-Rate,Melee High-Rate Boost,Rare,2
+12,Link Bubbly,hands,Impact Grenade,Impact Grenade Boost,Legendary,2.667
+17,Link Cube,hands,Ranged Fall-off,Ranged Fall-off Boost,Godlike,4
+20,Aave Plush,hands,Shield,Active Damage Reduction,Common,0.1
+23,Captain Aave Shield,hands,Shield,Active Damage Reduction,Uncommon,0.2
+26,Thaave Hammer,hands,Melee Basic,Melee Basic Boost,Rare,2
+29,REKT Sign,hands,Melee Basic,Melee Basic Boost,Legendary,2.667
+32,Aave Flag,hands,Melee Long-Range,Melee Long-Range Boost,Mythical,3.333
+38,32 ETH Coin,hands,Shield,Active Damage Reduction,Common,0.1
+41,Trezor Wallet,hands,Ranged Magical,Ranged Magical Boost,Uncommon,1.333
+44,DAO Egg,hands,Basic Grenade,Basic Grenade Boost,Rare,2
+47,Waifu Pillow,hands,Shield,Active Damage Reduction,Legendary,0.4
+51,Mudgen Diamond,hands,Ranged Basic,Ranged Basic Boost,Mythical,3.333
+58,Aagent Pistol,hands,Ranged Basic,Ranged Basic Boost,Rare,2
+64,Common Wizard Staff,hands,Ranged Magical,Ranged Magical Boost,Common,0.667
+65,Legendary Wizard Staff,hands,Ranged Magical,Ranged Magical Boost,Legendary,2.667
+69,Pitchfork,hands,Melee Long-Range,Melee Long-Range Boost,Common,0.667
+70,Handsaw,hands,Melee Pierce,Melee Pierce Boost,Mythical,3.333
+75,OKex Sign,hands,Melee Basic,Melee Basic Boost,Mythical,3.333
+76,Big GHST Token,hands,Shield,Active Damage Reduction,Common,0.1
+79,Skateboard,hands,Shield,Active Damage Reduction,Rare,0.3
+82,Sushi Piece,hands,Basic Grenade,Basic Grenade Boost,Legendary,2.667
+83,Sushi Knife,hands,Melee Pierce,Melee Pierce Boost,Rare,2
+89,Pickaxe,hands,Melee Long-Range,Melee Long-Range Boost,Rare,2
+92,Bedtime Milk,hands,Impact Grenade,Impact Grenade Boost,Rare,2
+93,Fluffy Pillow,hands,Shield,Active Damage Reduction,Legendary,0.4
+96,Water bottle,hands,Impact Grenade,Impact Grenade Boost,Uncommon,1.333
+99,Parasol,hands,Melee Long-Range,Melee Long-Range Boost,Mythical,3.333
+100,Clutch,hands,Shield,Active Damage Reduction,Legendary,0.4
+103,Witchy Wand,hands,Ranged Magical,Ranged Magical Boost,Mythical,3.333
+106,Portal Mage Axe,hands,Melee Pierce,Melee Pierce Boost,Legendary,2.667
+107,Portal Mage Black Axe,hands,Melee Pierce,Melee Pierce Boost,Godlike,4
+110,Jamaican Flag,hands,Melee Long-Range,Melee Long-Range Boost,Rare,2
+113,Uranium Rod,hands,Impact Grenade,Impact Grenade Boost,Godlike,4
+116,Coconut,hands,Impact Grenade,Impact Grenade Boost,Rare,2
+118,Water Jug,hands,Impact Grenade,Impact Grenade Boost,Legendary,2.667
+119,Baby Bottle,hands,Impact Grenade,Impact Grenade Boost,Legendary,2.667
+120,Martini,hands,Impact Grenade,Impact Grenade Boost,Legendary,2.667
+121,Wine,hands,Impact Grenade,Impact Grenade Boost,Rare,2
+122,Milkshake,hands,Impact Grenade,Impact Grenade Boost,Mythical,3.333
+123,Apple Juice,hands,Impact Grenade,Impact Grenade Boost,Uncommon,1.333
+130,Fireball,hands,Ranged Fall-off,Ranged Fall-off Boost,Common,0.667
+134,L2 Sign,hands,Melee High-Rate,Melee High-Rate Boost,Common,0.667
+137,Vote Sign,hands,Melee Basic,Melee Basic Boost,Common,0.667
+141,Gemstone Ring,hands,Ranged Fall-off,Ranged Fall-off Boost,Uncommon,1.333
+148,Royal Scepter,hands,Melee Basic,Melee Basic Boost,Rare,2
+158,Lil Pump Drank,hands,Impact Grenade,Impact Grenade Boost,Rare,2
+201,Mechanical claw,hands,Melee High-Rate,Melee High-Rate Boost,Legendary,2.667
+204,Game controller,hands,Melee High-Rate,Melee High-Rate Boost,Uncommon,1.333
+205,Gotchi Mug,hands,Impact Grenade,Impact Grenade Boost,Common,0.667
+212,1337 Laptop,hands,Shield,Active Damage Reduction,Mythical,0.5
+217,Energy Gun,hands,Ranged Fall-off,Ranged Fall-off Boost,Mythical,3.333
+223,Hook Hand,hands,Melee Basic,Melee Basic Boost,Uncommon,1.333
+225,Basketball,hands,Impact Grenade,Impact Grenade Boost,Common,0.667
+229,Lasso,hands,Ranged Basic,Ranged Basic Boost,Uncommon,1.333
+247,Up Arrow,hands,Basic Grenade,Basic Grenade Boost,Uncommon,1.333
+251,Candy Jaar,hands,Basic Grenade,Basic Grenade Boost,Rare,2
+254,uGOTCHI Token,hands,Shield,Active Damage Reduction,Common,0.1
+257,Bitcoin Guitar,hands,Melee Long-Range,Melee Long-Range Boost,Legendary,2.667
+294,Bow and Arrow,hands,Ranged Sniper,Ranged Sniper Boost,Common,0.667
+296,Double-sided Axe,hands,Melee Pierce,Melee Pierce Boost,Uncommon,1.333
+299,Longbow,hands,Ranged Sniper,Ranged Sniper Boost,Uncommon,1.333
+304,Paper Fan,hands,Shield,Active Damage Reduction,Rare,0.3
+311,Spirit Sword,hands,Melee High-Rate,Melee High-Rate Boost,Mythical,3.333
+312,Plate Shield,hands,Shield,Active Damage Reduction,Mythical,0.5
+315,Haanzo Katana,hands,Melee High-Rate,Melee High-Rate Boost,Godlike,4
+352,Pixelcraft Square,hands,Ranged Basic,Ranged Basic Boost,Common,0.667
+357,Nail Gun,hands,Ranged Fall-off,Ranged Fall-off Boost,Rare,2
+360,Geode Smasher,hands,Melee Basic,Melee Basic Boost,Legendary,2.667
+364,Paint Brush,hands,Ranged Fall-off,Ranged Fall-off Boost,Mythical,3.333
+365,Paint Palette,hands,Shield,Active Damage Reduction,Mythical,0.5
+369,Staff of Creation,hands,Ranged Sniper,Ranged Sniper Boost,Godlike,4
+375,GM Seeds,hands,Basic Grenade,Basic Grenade Boost,Common,0.667
+379,Lick Tentacle,hands,Melee Basic,Melee Basic Boost,Rare,2
+386,Staff of Charming,hands,Ranged Magical,Ranged Magical Boost,Godlike,4
+1,Camo Hat,head,Basic Hat,AP Regen,Common,2
+4,Snow Camo Hat,head,Basic Hat,AP Regen,Uncommon,4
+7,Marine Cap,head,Basic Hat,AP Regen,Rare,6
+10,Link White Hat,head,Formal Hat,Damage to NPC,Legendary,1
+21,Captain Aave Mask,head,Warrior,HP Capacity,Uncommon,1000
+24,Thaave Helmet,head,Armor,Passive Damage Reduction,Rare,0.09
+27,Marc Hair,head,Hair,HP Regen,Legendary,12
+30,Jordan Hair,head,Long Hair,HP Capacity,Mythical,2500
+33,Stani Hair,head,Hair,HP Regen,Godlike,18
+39,Foxy Mask,head,Mage / RPG / Sports,Movement Speed,Uncommon,0.15
+42,Eagle Mask,head,Mage / RPG / Sports,Movement Speed,Rare,0.225
+45,Ape Mask,head,Mage / RPG / Sports,Movement Speed,Legendary,0.3
+48,Xibot Mohawk,head,Hair,HP Regen,Mythical,15
+52,Galaxy Brain,head,Magic Hat,AP Regen,Godlike,12
+59,Aagent Fedora Hat,head,Formal Hat,Damage to NPC,Rare,0.75
+60,Common Wizard Hat,head,Mage Attire,AP Capacity,Common,25
+61,Legendary Wizard Hat,head,Magic Hat,AP Capacity,Legendary,100
+62,Mythical Wizard Hat,head,Mage Attire,AP Capacity,Mythical,125
+63,Godlike Wizard Hat,head,Magic Hat,AP Regen,Godlike,12
+67,Straw Hat,head,Big Hat,HP Regen,Common,3
+71,Red Santa Hat,head,Big Hat,HP Regen,Rare,9
+72,Jaay Hairpiece,head,Hair,HP Regen,Mythical,15
+77,Bitcoin Beanie,head,Big Hat,HP Regen,Uncommon,6
+80,Sushi Bandana,head,Worker,Critical Damages Multiplier,Rare,0.6
+84,Gentleman Hat,head,Formal Hat,Damage to NPC,Legendary,1
+87,Miner Helmet,head,Armor,Passive Damage Reduction,Uncommon,0.06
+90,Pajama Hat,head,Comfy,Evasion,Common,0.05
+94,Sweatband,head,Mage / RPG / Sports,Movement Speed,Uncommon,0.15
+97,Pillbox Hat,head,Formal Hat,Damage to NPC,Legendary,1
+101,Witchy Hat,head,Magic Hat,AP Regen,Legendary,8
+104,Portal Mage Helmet,head,Armor,Passive Damage Reduction,Legendary,0.12
+108,Rasta Hat,head,Big Hat,HP Regen,Uncommon,6
+111,Hazmat Hood,head,Worker,Critical Damages Multiplier,Legendary,0.8
+124,Beer Helmet,head,Mage / RPG / Sports,Movement Speed,Mythical,0.375
+131,Dragon Horns,head,Menacing,Damage to NPC,Uncommon,0.5
+133,Pointy Horns,head,Menacing,Damage to NPC,Legendary,1
+136,Polygon Cap,head,Basic Hat,AP Regen,Rare,6
+139,Snapshot Cap,head,Basic Hat,AP Regen,Rare,6
+142,Princess Tiara,head,Jewelry,Luck,Rare,0.225
+144,Princess Hair,head,Long Hair,HP Capacity,Mythical,2500
+145,Godli Locks,head,Long Hair,HP Capacity,Godlike,3000
+147,Tiny Crown,head,Jewelry,Luck,Uncommon,0.15
+149,Royal Crown,head,Jewelry,Luck,Legendary,0.3
+161,Lil Pump Dreads,head,Long Hair,HP Capacity,Godlike,3000
+206,Biker Helmet,head,Armor,Passive Damage Reduction,Rare,0.09
+211,Guy Fawkes Mask,head,Mage / RPG / Sports,Movement Speed,Common,0.075
+218,Mohawk,head,Hair,HP Regen,Uncommon,6
+221,Pirate Hat,head,Formal Hat,Damage to NPC,Common,0.25
+226,Red Headband,head,Mage / RPG / Sports,Movement Speed,Rare,0.225
+228,10 Gallon Hat,head,Big Hat,HP Regen,Common,3
+232,Poncho Hoodie,head,Comfy,Evasion,Common,0.05
+235,Shaaman Hoodie,head,Mage Attire,AP Capacity,Legendary,100
+239,Wagie Cap,head,Basic Hat,AP Regen,Uncommon,4
+242,Yellow Manbun,head,Long Hair,HP Capacity,Legendary,2000
+245,Gecko Hat,head,Big Hat,HP Regen,Rare,9
+252,Aastronaut Helmet,head,Armor,Passive Damage Reduction,Common,0.03
+255,Space Helmet,head,Armor,Passive Damage Reduction,Legendary,0.12
+292,Brunette Ponytail,head,Long Hair,HP Capacity,Common,500
+298,Horned Helmet,head,Armor,Passive Damage Reduction,Common,0.03
+300,Feathered Cap,head,Formal Hat,Damage to NPC,Uncommon,0.5
+302,Geisha Headpiece,head,Long Hair,HP Capacity,Rare,1500
+308,Red Hair,head,Long Hair,HP Capacity,Legendary,2000
+309,Citaadel Helm,head,Armor,Passive Damage Reduction,Mythical,0.15
+313,Kabuto Helmet,head,Armor,Passive Damage Reduction,Godlike,0.18
+363,FAKE Beret,head,Formal Hat,Damage to NPC,Mythical,1.25
+370,Wavy Hair,head,Hair,HP Regen,Common,3
+376,Lick Brain,head,Menacing,Damage to NPC,Rare,0.75
+380,Sebastien Hair,head,Hair,HP Regen,Legendary,12
+387,Roflnoggin,head,animal,Luck,Godlike,0.45
+35,Aave Boat,pet,Mage / RPG / Sports,Movement Speed,Godlike,0.45
+40,Foxy Tail,pet,other pet2,Stealth,Uncommon,0.3
+151,Common Rofl,pet,animal,Luck,Common,0.075
+152,Uncommon Rofl,pet,animal,Luck,Uncommon,0.15
+153,Rare Rofl,pet,animal,Luck,Rare,0.225
+154,Legendary Rofl,pet,animal,Luck,Legendary,0.3
+155,Mythical Rofl,pet,animal,Luck,Mythical,0.375
+156,Godlike Rofl,pet,animal,Luck,Godlike,0.45
+233,Uncommon Cacti,pet,other pet,Critical Damages Multiplier,Uncommon,0.4
+236,Blue Cacti,pet,other pet,Critical Damages Multiplier,Rare,0.6
+237,Mythical Cacti,pet,other pet,Critical Damages Multiplier,Mythical,1
+238,Godlike Cacti,pet,other pet,Critical Damages Multiplier,Godlike,1.2
+261,Aantenna Bot,pet,other pet2,Stealth,Mythical,0.75
+305,Sus Butterfly,pet,other pet2,Stealth,Legendary,0.6
+353,Nimbus,pet,other pet2,Stealth,Common,0.15
+361,Geo,pet,Mage / RPG / Sports,Movement Speed,Legendary,0.3
+374,Lens n Frens Plant,pet,other pet2,Stealth,Rare,0.45

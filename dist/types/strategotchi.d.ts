@@ -14,8 +14,8 @@ export type StrateGotchi = {
 export type StrategotchiWearable = {
     id: number;
     name: string;
-    type: WearableType;
+    type: StrategotchiWearableType;
     damage: number;
     specialAbilities: Array<string>;
 };
-export type WearableType = "melee" | "ranged" | "lobbed" | "omni-targeting" | "aoe";
+export type StrategotchiWearableType = "melee" | "ranged" | "lobbed" | "omni-targeting" | "aoe";

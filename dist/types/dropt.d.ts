@@ -32,11 +32,11 @@ export type DroptGotchi = {
 };
 export type DroptWearable = {
     id: number;
-    type: WearableType;
+    type: DroptWearableType;
     rarityScoreModifier: number;
     traitsModifiers: Array<number>;
     gameTraitsModifiers: {
         [Property in keyof DroptGotchi["traits"]]?: RulesLogic | null;
     };
 };
-export type WearableType = "melee" | "ranged" | "shield" | null;
+export type DroptWearableType = "melee" | "ranged" | "shield" | null;

@@ -1,6 +1,5 @@
 import * as fs from "fs";
-import { RulesLogic } from "json-logic-js";
-import { wearable, wearablesData } from "../../data/wearables.subgraph";
+import { wearable, wearablesData } from "../../../data/wearables.subgraph";
 import { StrategotchiWearable, StrategotchiWearableType } from "types/strategotchi";
 import { createEmptyStrategotchiWearable } from "lib/strategotchi";
 

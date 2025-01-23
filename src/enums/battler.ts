@@ -1,5 +1,5 @@
 export enum Classes {
-  CLEAVERS = "cleavers",
+  CLEAVER = "cleaver",
   CURSED = "cursed",
   ENLIGHTENED = "enlightened",
   HEALER = "healer",

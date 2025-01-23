@@ -1,0 +1,19 @@
+name,type,rarity,damage,attack_speed,aim_fov,fall_off,min_dispersion,max_dispersion,dispersion_increase_per_shot,dispersion_decrease_rate,dispersion_ads,recoil_strength,recoil_decrease_rate
+Link Cube,Ranged Fall-off,Godlike,665,2,50,1,0.4,40,0.5,4,3,50,1
+Staff of Creation,Ranged Sniper,Godlike,1000,1,15,0,0.1,40,1,2,0.5,100,0.5
+Staff Charming,Ranged Magical,Godlike,275,5,40,0,0.1,5,0.25,1,0.5,12.5,4
+Mudgen Diamond,Ranged Basic,Mythical,286,3,30,0,0.4,20,1,4,2,50,2
+Energy Gun,Ranged Fall-off,Mythical,576.3333333,2,50,1,0.4,40,0.5,4,3,50,1
+Paint Brush,Ranged Fall-off,Mythical,576.3333333,2,50,1,0.4,40,0.5,4,3,50,1
+Witchy Wand,Ranged Magical,Mythical,238.3333333,5,40,0,0.1,5,0.25,1,0.5,12.5,4
+Legendary Wizard Staff,Ranged Magical,Legendary,201.6666667,5,40,0,0.1,5,0.25,1,0.5,12.5,4
+Aagent Pistol,Ranged Basic,Rare,198,3,30,0,0.4,20,1,4,2,50,2
+Nail Gun,Ranged Fall-off,Rare,399,2,50,1,0.4,40,0.5,4,3,50,1
+Trezor Wallet,Ranged Magical,Uncommon,128.3333333,5,40,0,0.1,5,0.25,1,0.5,12.5,4
+Longbow,Ranged Sniper,Uncommon,466.6666667,1,15,0,0.1,40,1,2,0.5,100,0.5
+Lasso,Ranged Basic,Uncommon,154,3,30,0,0.4,20,1,4,2,50,2
+Gemstone Ring,Ranged Fall-off,Uncommon,310.3333333,2,50,1,0.4,40,0.5,4,3,50,1
+Common Wizard Staff,Ranged Magical,Common,91.66666667,5,40,0,0.1,5,0.25,1,0.5,12.5,4
+Fireball,Ranged Fall-off,Common,221.6666667,2,50,1,0.4,40,0.5,4,3,50,1
+Bow and Arrow,Ranged Sniper,Common,333.3333333,1,15,0,0.1,40,1,2,0.5,100,0.5
+Pixelcraft Square,Ranged Basic,Common,110,3,30,0,0.4,20,1,4,2,50,2

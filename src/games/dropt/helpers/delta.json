@@ -1,0 +1,3 @@
+{
+  "min": [{ "abs": [{ "-": [49.5, { "var": "value" }] }] }, {"var": "deltaCap"}]
+}

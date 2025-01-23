@@ -23,8 +23,11 @@
     "dropt:wearable:generate": "tsc && node dist/scripts/dropt/generateWearableFiles.js",
     "dropt:wearable:generate:2ndstats": "tsx src/scripts/dropt/generateWearableFilesWith2ndStats.ts",
     "strategotchi:wearable:generate": "tsx src/scripts/strategotchi/generateWearableFiles.ts",
+    "sfa:weapons:generate": "tsx src/scripts/sfa/generateWeaponsFile.ts",
+    "sfa:wearables:generate": "tsx src/scripts/sfa/generateWearablesFile.ts",
     "tsc": "rimraf tsbuild && tsc",
-    "tsx": "tsx"
+    "tsx": "tsx",
+    "sfa:test": "tsx src/scripts/tests/sfa.ts"
   },
   "repository": {
     "type": "git",

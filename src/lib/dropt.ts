@@ -26,19 +26,22 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
     eys: delta(gotchi.traits.eys),
     eyc: delta(gotchi.traits.eyc),
     brs: gotchi.traits.brs,
-  }
+  };
 
-  droptGotchi.traits.hp = evaluateTrait(gotchiDelta, hp as RulesLogic) as number;
+  droptGotchi.traits.hp = evaluateTrait(
+    gotchiDelta,
+    hp as RulesLogic
+  ) as number;
   droptGotchi.traits.attack = evaluateTrait(
     gotchiDelta,
     attack as RulesLogic
   ) as number;
-  droptGotchi.traits.critPercent = evaluateTrait(
+  droptGotchi.traits.critPercent =
+    evaluateTrait(gotchiDelta, crit as RulesLogic) as number;
+  droptGotchi.traits.ap = evaluateTrait(
     gotchiDelta,
-    crit as RulesLogic
+    ap as RulesLogic
   ) as number;
-  droptGotchi.traits.ap = evaluateTrait(gotchiDelta, ap as RulesLogic) as number;
-
   droptGotchi.traits.doubleStrikeChance = evaluateTrait(
     gotchiDelta,
     doubleStrikeChance as RulesLogic
@@ -53,41 +56,46 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
     const wearable = data.find((w) => w.id === wearableId);
     if (wearable) {
       if (wearable.gameTraitsModifiers.hp) {
-        droptGotchi.traits.hp = Math.round(evaluateTrait(
+        droptGotchi.traits.hp = evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.hp
-        ) as number);
+        ) as number;
       }
       if (wearable.gameTraitsModifiers.attack) {
-        droptGotchi.traits.attack = Math.round(evaluateTrait(
+        droptGotchi.traits.attack = evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.attack
-        ) as number);
+        ) as number;
       }
       if (wearable.gameTraitsModifiers.critPercent) {
-        droptGotchi.traits.critPercent = Math.round(evaluateTrait(
+        droptGotchi.traits.critPercent = evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.critPercent
-        ) as number);
+        ) as number;
       }
       if (wearable.gameTraitsModifiers.ap) {
-        droptGotchi.traits.ap = Math.round(evaluateTrait(
+        droptGotchi.traits.ap = evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.ap
-        ) as number);
+        ) as number;
       }
-      if (wearable.gameTraitsModifiers.increasedAttackRange) {
-        droptGotchi.traits.increasedAttackRange = Math.round(evaluateTrait(
-          droptGotchi.traits,
-          wearable.gameTraitsModifiers.increasedAttackRange
-        ) as number);
-      }
-      if (wearable.gameTraitsModifiers.doubleStrikeChance) {
-        droptGotchi.traits.doubleStrikeChance = Math.round(evaluateTrait(
-          droptGotchi.traits,
-          wearable.gameTraitsModifiers.doubleStrikeChance
-        ) as number);
-      }
+      // if (wearable.gameTraitsModifiers.increasedAttackRange) {
+      //   droptGotchi.traits.increasedAttackRange = Math.round(
+      //     evaluateTrait(
+      //       droptGotchi.traits,
+      //       wearable.gameTraitsModifiers.increasedAttackRange
+      //     ) as number
+      //   );
+      // }
+      // if (wearable.gameTraitsModifiers.doubleStrikeChance) {
+      //   console.log("wearable.gameTraitsModifiers.doubleStrikeChance", wearable.gameTraitsModifiers.doubleStrikeChance);
+      //   droptGotchi.traits.doubleStrikeChance = Math.round(
+      //     evaluateTrait(
+      //       droptGotchi.traits,
+      //       wearable.gameTraitsModifiers.doubleStrikeChance
+      //     ) as number
+      //   );
+      // }
       /*
       Those traits are not implemented in the game yet 
       */
@@ -153,13 +161,23 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
       // }
     }
   }
+  // We end up by rounding some of the numbers
+  droptGotchi.traits.hp = Math.round(droptGotchi.traits.hp);
+  droptGotchi.traits.attack = Math.round(droptGotchi.traits.attack);
+  droptGotchi.traits.critPercent =
+    Math.round(droptGotchi.traits.critPercent * 10) / 10;
+  droptGotchi.traits.ap = Math.round(droptGotchi.traits.ap);
+  droptGotchi.traits.critDamageIncrease =
+    Math.floor(droptGotchi.traits.critDamageIncrease * 100) / 100;
+  droptGotchi.traits.doubleStrikeChance =
+    Math.floor(droptGotchi.traits.doubleStrikeChance * 10) / 10;
 
   return droptGotchi;
 }
 
 function delta(value: number) {
-  const jsl = getJsonLogicInstance()
-  return jsl.apply(deltaLogic as RulesLogic, { value, deltaCap }) as number
+  const jsl = getJsonLogicInstance();
+  return jsl.apply(deltaLogic as RulesLogic, { value, deltaCap }) as number;
 }
 
 function createEmptyDroptGotchi(gotchi: Gotchi): DroptGotchi {

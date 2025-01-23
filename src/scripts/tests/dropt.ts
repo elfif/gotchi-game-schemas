@@ -27,7 +27,7 @@ const gotchi: Gotchi = {
     eys: 17,
     eyc: 20,
   },
-  wearables: [54, 295, 214, 309, 75, 79, 151],
+  wearables: [105, 18, 66, 61, 65, 201, 151],
 };
 
 const g11008: Gotchi = {
@@ -137,7 +137,7 @@ const g9024: Gotchi = {
 
 
 function main() {
-  const droptGotchi = createDroptGotchi(gotchi);
+  const droptGotchi = createDroptGotchi(g2935);
   console.log("droptGotchi", droptGotchi);
 }
 main();

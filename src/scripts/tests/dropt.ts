@@ -137,7 +137,7 @@ const g9024: Gotchi = {
 
 
 function main() {
-  const droptGotchi = createDroptGotchi(g11008);
+  const droptGotchi = createDroptGotchi(gotchi);
   console.log("droptGotchi", droptGotchi);
 }
 main();

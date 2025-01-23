@@ -56,28 +56,28 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
     const wearable = data.find((w) => w.id === wearableId);
     if (wearable) {
       if (wearable.gameTraitsModifiers.hp) {
-        droptGotchi.traits.hp = evaluateTrait(
+        droptGotchi.traits.hp = Math.round(evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.hp
-        ) as number;
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.attack) {
-        droptGotchi.traits.attack = evaluateTrait(
+        droptGotchi.traits.attack = Math.round(evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.attack
-        ) as number;
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.critPercent) {
-        droptGotchi.traits.critPercent = evaluateTrait(
+        droptGotchi.traits.critPercent = Math.round(evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.critPercent
-        ) as number;
+        ) as number);
       }
       if (wearable.gameTraitsModifiers.ap) {
-        droptGotchi.traits.ap = evaluateTrait(
+        droptGotchi.traits.ap = Math.round(evaluateTrait(
           droptGotchi.traits,
           wearable.gameTraitsModifiers.ap
-        ) as number;
+        ) as number);
       }
       // if (wearable.gameTraitsModifiers.increasedAttackRange) {
       //   droptGotchi.traits.increasedAttackRange = Math.round(

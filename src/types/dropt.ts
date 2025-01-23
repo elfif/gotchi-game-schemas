@@ -49,7 +49,7 @@ export type DroptGotchi = {
 
 export type DroptWearable = {
   id: number;
-  type?: WearableType;
+  type?: DroptWearableType;
   rarityScoreModifier: number;
   traitsModifiers: Array<number>;
   gameTraitsModifiers: {
@@ -59,7 +59,7 @@ export type DroptWearable = {
 
 export type DroptWearableTrait = {
   id: number;
-  type?: WearableType;
+  type?: DroptWearableType;
   rarityScoreModifier: number;
   traitsModifiers: Array<number>;
   gameTraitsModifiers: {
@@ -67,4 +67,4 @@ export type DroptWearableTrait = {
   };
 };
 
-export type WearableType = "melee" | "ranged" | "shield" | null;
+export type DroptWearableType = "melee" | "ranged" | "shield" | null;

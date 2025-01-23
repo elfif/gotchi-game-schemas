@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { RulesLogic } from "json-logic-js";
 import { wearable, wearablesData } from "../../../data/wearables.subgraph";
-import { DroptWearable, DroptWearableType } from "../../../types/dropt";
+import { DroptWearable, WearableType } from "../../../types/dropt";
 
 const destFolder = "./src/games/dropt/wearables/";
 const meleeIds = [
@@ -38,7 +38,7 @@ function generateWearableFiles() {
   );
 }
 
-function getHandWearableType(wearable: wearable): DroptWearableType {
+function getHandWearableType(wearable: wearable): WearableType {
   if (meleeIds.includes(parseInt(wearable.id))) return "melee";
   if (rangedIds.includes(parseInt(wearable.id))) return "ranged";
   if (shields.includes(parseInt(wearable.id))) return "shield";

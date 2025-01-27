@@ -18,16 +18,13 @@
     "lint:fix": "eslint src/**/*.ts --fix",
     "build": "rimraf dist && rollup -c",
     "battler:test": "tsx src/scripts/tests/battler.ts",
-    "strategotchi:test": "tsx src/scripts/tests/strategotchi.ts",
     "dropt:test": "tsx src/scripts/tests/dropt.ts",
     "dropt:wearable:generate": "tsx src/scripts/generators/dropt/generateWearableFiles.ts",
-    "dropt:wearable:generate:2ndstats": "tsx src/scripts/dropt/generateWearableFilesWith2ndStats.ts",
+    "strategotchi:test": "tsx src/scripts/tests/strategotchi.ts",
     "strategotchi:wearable:generate": "tsx src/scripts/strategotchi/generateWearableFiles.ts",
+    "sfa:test": "tsx src/scripts/tests/sfa.ts",
     "sfa:weapons:generate": "tsx src/scripts/sfa/generateWeaponsFile.ts",
-    "sfa:wearables:generate": "tsx src/scripts/sfa/generateWearablesFile.ts",
-    "tsc": "rimraf tsbuild && tsc",
-    "tsx": "tsx",
-    "sfa:test": "tsx src/scripts/tests/sfa.ts"
+    "sfa:wearables:generate": "tsx src/scripts/sfa/generateWearablesFile.ts"
   },
   "repository": {
     "type": "git",

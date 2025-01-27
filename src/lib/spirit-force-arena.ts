@@ -1,6 +1,4 @@
 import {
-  SfaMaxTraits,
-  SfaMinTraits,
   SfaTraits,
   MappedTraits,
   SfaWearable,
@@ -26,17 +24,6 @@ import wearables from "../games/spirit-force-arena/wearables/wearables.json";
 import { evaluateClass, evaluateTrait, getJsonLogicInstance } from "./helpers";
 import { RulesLogic } from "json-logic-js";
 import { SfaClasses } from "../enums/spirit-force-arena";
-
-function getTraitsMinValues(): SfaMinTraits {
-  return min_traits;
-}
-
-function getTraitsMaxValues(className: SfaClasses): SfaMaxTraits {
-  if (max_traits[className]) {
-    return max_traits[className];
-  }
-  return max_traits[SfaClasses.DIVINE];
-}
 
 export function createSpiritForceArenaGotchi(
   gotchi: g.Gotchi

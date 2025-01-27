@@ -1,4 +1,4 @@
-import { SfaClasses, SfaWeaponCategories, SfaWeaponTypes,  } from "enums/spirit-force-arena";
+import { SfaClasses,  } from "enums/spirit-force-arena";
 import { RulesLogic } from "json-logic-js";
 
 export type SfaMaxTraits = {

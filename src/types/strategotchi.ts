@@ -1,5 +1,3 @@
-import { RulesLogic } from "json-logic-js";
-
 export type StrateGotchi = {
   id: string;
   traits: {

@@ -28,6 +28,7 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
     brs: gotchi.traits.brs,
   };
 
+  // Evaluate all game traits.
   droptGotchi.traits.hp = evaluateTrait(
     gotchiDelta,
     hp as RulesLogic
@@ -51,6 +52,7 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
     critDamageIncrease as RulesLogic
   ) as number;
 
+  // Evaluate all wearables through the gameTraitsModifiers.
   const data = wearables as Array<DroptWearable>;
   for (const wearableId of gotchi.wearables) {
     const wearable = data.find((w) => w.id === wearableId);
@@ -79,86 +81,6 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
           wearable.gameTraitsModifiers.ap
         ) as number);
       }
-      // if (wearable.gameTraitsModifiers.increasedAttackRange) {
-      //   droptGotchi.traits.increasedAttackRange = Math.round(
-      //     evaluateTrait(
-      //       droptGotchi.traits,
-      //       wearable.gameTraitsModifiers.increasedAttackRange
-      //     ) as number
-      //   );
-      // }
-      // if (wearable.gameTraitsModifiers.doubleStrikeChance) {
-      //   console.log("wearable.gameTraitsModifiers.doubleStrikeChance", wearable.gameTraitsModifiers.doubleStrikeChance);
-      //   droptGotchi.traits.doubleStrikeChance = Math.round(
-      //     evaluateTrait(
-      //       droptGotchi.traits,
-      //       wearable.gameTraitsModifiers.doubleStrikeChance
-      //     ) as number
-      //   );
-      // }
-      /*
-      Those traits are not implemented in the game yet 
-      */
-      // if (wearable.gameTraitsModifiers.evasion) {
-      //   droptGotchi.traits.evasion = evaluateTrait(droptGotchi.traits, "evasion", wearable.gameTraitsModifiers.evasion);
-      // }
-      // if (wearable.gameTraitsModifiers.apRegen) {
-      //   droptGotchi.traits.apRegen = evaluateTrait(droptGotchi.traits, "apRegen", wearable.gameTraitsModifiers.apRegen);
-      // }
-      // if (wearable.gameTraitsModifiers.rangedDamage) {
-      //   droptGotchi.traits.rangedDamage = evaluateTrait(droptGotchi.traits, "rangedDamage", wearable.gameTraitsModifiers.rangedDamage);
-      // }
-      // if (wearable.gameTraitsModifiers.critDamageIncrease) {
-      //   droptGotchi.traits.critDamageIncrease = evaluateTrait(droptGotchi.traits, "critDamageIncrease", wearable.gameTraitsModifiers.critDamageIncrease);
-      // }
-      // if (wearable.gameTraitsModifiers.specialEffect) {
-      //   droptGotchi.traits.specialEffect = evaluateTrait(droptGotchi.traits, "specialEffect", wearable.gameTraitsModifiers.specialEffect);
-      // }
-      // if (wearable.gameTraitsModifiers.debuffEffectiveness) {
-      //   droptGotchi.traits.debuffEffectiveness = evaluateTrait(droptGotchi.traits, "debuffEffectiveness", wearable.gameTraitsModifiers.debuffEffectiveness);
-      // }
-      // if (wearable.gameTraitsModifiers.specialCooldownReduction) {
-      //   droptGotchi.traits.specialCooldownReduction = evaluateTrait(droptGotchi.traits, "specialCooldownReduction", wearable.gameTraitsModifiers.specialCooldownReduction);
-      // }
-      // if (wearable.gameTraitsModifiers.piercing) {
-      //   droptGotchi.traits.piercing = evaluateTrait(droptGotchi.traits, "piercing", wearable.gameTraitsModifiers.piercing);
-      // }
-      // if (wearable.gameTraitsModifiers.specialCostReduction) {
-      //   droptGotchi.traits.specialCostReduction = evaluateTrait(droptGotchi.traits, "specialCostReduction", wearable.gameTraitsModifiers.specialCostReduction);
-      // }
-      // if (wearable.gameTraitsModifiers.armour) {
-      //   droptGotchi.traits.armour = evaluateTrait(droptGotchi.traits, "armour", wearable.gameTraitsModifiers.armour);
-      // }
-      // if (wearable.gameTraitsModifiers.reduceMeleeDamage) {
-      //   droptGotchi.traits.reduceMeleeDamage = evaluateTrait(droptGotchi.traits, "reduceMeleeDamage", wearable.gameTraitsModifiers.reduceMeleeDamage);
-      // }
-      // if (wearable.gameTraitsModifiers.reduceMagicalDamage) {
-      //   droptGotchi.traits.reduceMagicalDamage = evaluateTrait(droptGotchi.traits, "reduceMagicalDamage", wearable.gameTraitsModifiers.reduceMagicalDamage);
-      // }
-      // if (wearable.gameTraitsModifiers.reduceElementalDamage) {
-      //   droptGotchi.traits.reduceElementalDamage = evaluateTrait(droptGotchi.traits, "reduceElementalDamage", wearable.gameTraitsModifiers.reduceElementalDamage);
-      // }
-      // if (wearable.gameTraitsModifiers.apLeech) {
-      //   droptGotchi.traits.apLeech = evaluateTrait(droptGotchi.traits, "apLeech", wearable.gameTraitsModifiers.apLeech);
-      // }
-      // if (wearable.gameTraitsModifiers.hpLeech) {
-      //   droptGotchi.traits.hpLeech = evaluateTrait(droptGotchi.traits, "hpLeech", wearable.gameTraitsModifiers.hpLeech);
-      // }
-      // if (wearable.gameTraitsModifiers.essenceLeech) {
-      //   droptGotchi.traits.essenceLeech = evaluateTrait(droptGotchi.traits, "essenceLeech", wearable.gameTraitsModifiers.essenceLeech);
-      // }
-      // if (wearable.gameTraitsModifiers.moveSpeed) {
-      //   droptGotchi.traits.moveSpeed = evaluateTrait(droptGotchi.traits, "moveSpeed", wearable.gameTraitsModifiers.moveSpeed);
-      // }
-      // if (wearable.gameTraitsModifiers.magnetism) {
-      //   droptGotchi.traits.magnetism = evaluateTrait(droptGotchi.traits, "magnetism", wearable.gameTraitsModifiers.magnetism);
-      // }
-      // if (wearable.gameTraitsModifiers.extraDash) {
-      //   droptGotchi.traits.extraDash = evaluateTrait(droptGotchi.traits, "extraDash", wearable.gameTraitsModifiers.extraDash);
-      // }
-      // if (wearable.gameTraitsModifiers.purveying) {
-      //   droptGotchi.traits.purveying = evaluateTrait(droptGotchi.traits, "purveying", wearable.gameTraitsModifiers.purveying);
-      // }
     }
   }
   // We end up by rounding some of the numbers

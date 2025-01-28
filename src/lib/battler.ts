@@ -27,6 +27,7 @@ import speed from '../games/gotchi-battler/traits/speed.json'
 export function createBattlerGotchi(gotchi: Gotchi): BattlerGotchi {
   const battlerGotchi = createEmptyBattlerGotchi(gotchi.id);
   
+  // Evaluate all classes one by one.
   if (evaluateClass(gotchi.traits, cursed as RulesLogic)) {
     battlerGotchi.classes.push(Classes.CURSED);
   }
@@ -59,6 +60,7 @@ export function createBattlerGotchi(gotchi: Gotchi): BattlerGotchi {
     battlerGotchi.classes.push(Classes.TROLL);
   }
 
+  // Evaluate all traits.
   battlerGotchi.traits.accuracy = Math.round(evaluateTrait(gotchi.traits, accuracy as RulesLogic) as number * 10) / 10
   battlerGotchi.traits.armor = Math.round(evaluateTrait(gotchi.traits, armor as RulesLogic) as number)
   battlerGotchi.traits.crit = Math.round(evaluateTrait(gotchi.traits, crit as RulesLogic) as number)

@@ -120,9 +120,10 @@ I will stay in charge of managing the incoming pull requests and I will make mys
 
 ## Adding new games. 
 
-If you want to add a new game, you will need to create a new folder in the /src/games folder.
-You will need to create the following files:
-- A lib file in the /src/lib/{game} folder.
-- A test script in the /src/scripts/test/{game} folder.
-- A generator script in the /src/scripts/generators/{game} folder.
+If you want to add a new game, you will need to : 
+  - create a new folder in the /src/games folder.
+  - create the following files:
+    - A lib file in the /src/lib/{game} folder.
+    - A test script in the /src/scripts/test/{game} folder.
+    - A generator script in the /src/scripts/generators/{game} folder.
 

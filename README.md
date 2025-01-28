@@ -21,6 +21,14 @@ Following games are currently supported:
 - [DROPT](https://web.playdropt.io/)
 - [GotchiBattler](https://gotchibattler.com/)
 
+## Installation
+
+```bash
+npm install gotchi-game-schemas
+```
+
+Then to use the schema in your project, you can import it like this:
+
 ## Repository content 
 
 There are 3 main sections in this repository.

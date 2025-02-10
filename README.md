@@ -29,6 +29,31 @@ npm install gotchi-game-schemas
 
 Then to use the schema in your project, you can import it like this:
 
+```ts
+import { createBattlerGotchi, createDroptGotchi, createSpiritForceArenaGotchi, createStrategotchiGotchi, Gotchi } from "gotchi-game-schemas";
+
+const gotchi: Gotchi = {
+  const g11008: Gotchi = {
+  id: "11008",
+  name: "FiFoOoO",
+  traits: {
+    brs: 612,
+    agg: 105,
+    nrg: 98,
+    spk: 90,
+    brn: 105,
+    eys: 17,
+    eyc: 20,
+  }, 
+  wearables: [105, 18, 66, 61, 65, 201, 0],
+};  
+
+const battlerGotchi = createBattlerGotchi(gotchi);
+const droptGotchi = createDroptGotchi(gotchi);
+const spiritForceArenaGotchi = createSpiritForceArenaGotchi(gotchi);
+const strategotchiGotchi = createStrategotchiGotchi(gotchi);
+```
+
 ## Repository content 
 
 There are 3 main sections in this repository.
@@ -47,7 +72,7 @@ Here  are some details regarding the different components of the schema.
 
 #### Helpers
 All games reuse some custom logic many times during their trait computation. Most common case is to transform a trait value into a normalized version. 
-Here is the gotchi battler implementation of the helper, this logic is applied to all origianl traits (nrg, agg, spk, brn, eys, eyc).:
+Here is the gotchi battler implementation of the helper, this logic is applied to all original traits (nrg, agg, spk, brn, eys, eyc).:
 
 ```json
 {
@@ -104,6 +129,7 @@ Generators are stored in the /src/scripts/generators folder.
 #### Test scripts
 
 Each game has its own test script. all those scripts are referenced in the package.json file.
+They are also good examples of how to call the lib.
 I used them to test my code and all the logic while coding.
 
 ### Types file
@@ -118,7 +144,7 @@ If someone wants to reuse the schema using another language, those files are the
 
 ## Build process
 
-I decided to use rollup to build the dist folder as it was the easiest way to transpile all the json files into js code. 
+I decided to use [rollup](https://rollupjs.org/) to build the dist folder as it was the easiest way to transpile all the json files into js code. 
 In the end the only file the dapp relies on when calling the package is the dist/index.js file.
 
 ## Maintaining the schema
@@ -134,4 +160,3 @@ If you want to add a new game, you will need to :
     - A lib file in the /src/lib/{game} folder.
     - A test script in the /src/scripts/test/{game} folder.
     - A generator script in the /src/scripts/generators/{game} folder.
-

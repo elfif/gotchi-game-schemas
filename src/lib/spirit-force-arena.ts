@@ -28,6 +28,7 @@ import { SfaClasses } from "../enums/spirit-force-arena";
 export function createSpiritForceArenaGotchi(
   gotchi: g.Gotchi
 ): SpiritForceArenaGotchi {
+  console.log('gotchi traits 0', gotchi.traits);
   const spiritForceArenaGotchi = new SpiritForceArenaGotchi(gotchi);
   return spiritForceArenaGotchi;
 }
@@ -114,8 +115,6 @@ export class SpiritForceArenaGotchi {
     this.grenadeWeapon = this.getGrenadeWeapon();
 
     // Now we apply the wearable modifiers to the game traits.
-    console.log(this.traits.melee_damage);
-    console.log(this.traits.ranged_damage);
     this.applyWearableModifiersToGameTraits();
 
     // Finally we compute the min and max traits based on the game traits.  
@@ -270,7 +269,6 @@ export class SpiritForceArenaGotchi {
   }
 
   protected handleHandsWearables() {
-    console.log(this.wearables);
     if (
       !this.wearables[g.righthand] &&
       !this.wearables[g.lefthand]
@@ -296,7 +294,6 @@ export class SpiritForceArenaGotchi {
         this.wearables[g.righthand]
       );
     }
-    console.log(this.wearables);
   }
 
   // If one hand is empty we put a weapon based on the category of the other hand.protected function 

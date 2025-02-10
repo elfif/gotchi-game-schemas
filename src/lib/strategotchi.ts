@@ -16,10 +16,11 @@ import { RulesLogic } from "json-logic-js";
 const LeftHandSlotIndex = 4;
 const RightHandSlotIndex = 5;
 
-export function createStrategotchiGotchi(gotchi: Gotchi): StrateGotchi {
+export function createStrategotchiGotchi(originalGotchi: Gotchi): StrateGotchi {
+  const gotchi = { ...originalGotchi };
+  gotchi.traits = { ...originalGotchi.traits };
+
   const strategotchiGotchi = createEmptyStrategotchiGotchi(gotchi.id);
-
-
   gotchi.traits.nrg =  mappedTrait(gotchi.traits.nrg) as number
   gotchi.traits.agg =  mappedTrait(gotchi.traits.agg) as number
   gotchi.traits.brn =  mappedTrait(gotchi.traits.brn) as number
@@ -49,7 +50,7 @@ export function createStrategotchiGotchi(gotchi: Gotchi): StrateGotchi {
 function mappedTrait(originalValue: number) {
   const jsl = getJsonLogicInstance()
   const value = { value: originalValue }
-  return jsl.apply(mappedValue as RulesLogic, value) as number
+  return jsl.apply(mappedValue as RulesLogic, value) as number 
 }
 
 function createEmptyStrategotchiGotchi(id: string): StrateGotchi {

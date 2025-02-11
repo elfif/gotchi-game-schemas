@@ -83,16 +83,17 @@ export function createDroptGotchi(gotchi: Gotchi): DroptGotchi {
       }
     }
   }
+  console.log("dropgotchi", droptGotchi.traits)  
   // We end up by rounding some of the numbers
   droptGotchi.traits.hp = Math.round(droptGotchi.traits.hp);
-  droptGotchi.traits.attack = Math.round(droptGotchi.traits.attack);
+  droptGotchi.traits.attack = Math.floor(droptGotchi.traits.attack);
   droptGotchi.traits.critPercent =
-    Math.round(droptGotchi.traits.critPercent * 10) / 10;
+    Math.floor(droptGotchi.traits.critPercent * 100) / 100;
   droptGotchi.traits.ap = Math.round(droptGotchi.traits.ap);
   droptGotchi.traits.critDamageIncrease =
-    Math.floor(droptGotchi.traits.critDamageIncrease * 100) / 100;
+    Math.ceil(droptGotchi.traits.critDamageIncrease * 100) / 100;
   droptGotchi.traits.doubleStrikeChance =
-    Math.floor(droptGotchi.traits.doubleStrikeChance * 10) / 10;
+    Math.ceil(droptGotchi.traits.doubleStrikeChance * 1000) / 10;
 
   return droptGotchi;
 }

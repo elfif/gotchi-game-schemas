@@ -1,8 +1,4 @@
-import {
-  SfaTraits,
-  MappedTraits,
-  SfaWearable,
-} from "types/spirit-force-arena";
+import { SfaTraits, MappedTraits, SfaWearable } from "types/spirit-force-arena";
 import * as g from "types/gotchi";
 import min_traits from "../games/spirit-force-arena/traits/min_traits.json";
 import max_traits from "../games/spirit-force-arena/traits/max_traits.json";
@@ -28,7 +24,6 @@ import { SfaClasses } from "../enums/spirit-force-arena";
 export function createSpiritForceArenaGotchi(
   gotchi: g.Gotchi
 ): SpiritForceArenaGotchi {
-  console.log('gotchi traits 0', gotchi.traits);
   const spiritForceArenaGotchi = new SpiritForceArenaGotchi(gotchi);
   return spiritForceArenaGotchi;
 }
@@ -117,7 +112,7 @@ export class SpiritForceArenaGotchi {
     // Now we apply the wearable modifiers to the game traits.
     this.applyWearableModifiersToGameTraits();
 
-    // Finally we compute the min and max traits based on the game traits.  
+    // Finally we compute the min and max traits based on the game traits.
     this.computeMinMaxTraits();
   }
 
@@ -143,19 +138,34 @@ export class SpiritForceArenaGotchi {
 
     if (this.rangedWeapon && this.rangedWeapon.attack_rate) {
       this.applyWearableTrait(this.rangedWeapon);
-      this.traits.ranged_dps = Math.round(this.rangedWeapon.attack_rate * this.traits.ranged_damage * 10) / 10;
+      this.traits.ranged_dps =
+        Math.round(
+          this.rangedWeapon.attack_rate * this.traits.ranged_damage * 10
+        ) / 10;
     }
     if (this.meleeWeapon && this.meleeWeapon.attack_rate) {
       this.applyWearableTrait(this.meleeWeapon);
-      this.traits.melee_dps = Math.round(this.meleeWeapon.attack_rate * this.traits.melee_damage * 10) / 10;
+      this.traits.melee_dps =
+        Math.round(
+          this.meleeWeapon.attack_rate * this.traits.melee_damage * 10
+        ) / 10;
     }
     if (this.grenadeWeapon) {
       this.applyWearableTrait(this.grenadeWeapon);
+      this.traits.grenade_type = this.grenadeWeapon.type;
+    }
+
+    if (this.wearables[g.lefthand] && this.wearables[g.lefthand].type === "shield") {
+      this.applyWearableTrait(this.wearables[g.lefthand]);
+    }
+
+    if (this.wearables[g.righthand] && this.wearables[g.righthand].type === "shield") {
+      this.applyWearableTrait(this.wearables[g.righthand]);
     }
   }
-  
+
   // TODO: This is a bit of a mess, we should refactor it.
-  protected applyWearableTrait(wearable: SfaWearable) {  
+  protected applyWearableTrait(wearable: SfaWearable) {
     switch (wearable.gameTraitsModifiers.traitName) {
       case "hp":
         this.traits.hp = evaluateTrait(
@@ -269,34 +279,25 @@ export class SpiritForceArenaGotchi {
   }
 
   protected handleHandsWearables() {
-    if (
-      !this.wearables[g.righthand] &&
-      !this.wearables[g.lefthand]
-    ) {
+    if (!this.wearables[g.righthand] && !this.wearables[g.lefthand]) {
       this.wearables[g.righthand] = createDefaultMeleeWeapon();
       this.wearables[g.lefthand] = createDefaultRangedWeapon();
     }
 
     // If only one hand is empty we put a weapon based on the category of the other hand.
-    if (
-      !this.wearables[g.righthand] &&
-      this.wearables[g.lefthand]
-    ) {
+    if (!this.wearables[g.righthand] && this.wearables[g.lefthand]) {
       this.wearables[g.righthand] = this.getDefaultWeapons(
         this.wearables[g.lefthand]
       );
     }
-    if (
-      !this.wearables[g.lefthand] &&
-      this.wearables[g.righthand]
-    ) {
+    if (!this.wearables[g.lefthand] && this.wearables[g.righthand]) {
       this.wearables[g.lefthand] = this.getDefaultWeapons(
         this.wearables[g.righthand]
       );
     }
   }
 
-  // If one hand is empty we put a weapon based on the category of the other hand.protected function 
+  // If one hand is empty we put a weapon based on the category of the other hand.protected function
   protected getDefaultWeapons(otherWeapon: SfaWearable): SfaWearable {
     if (otherWeapon.category === "melee") {
       return createDefaultRangedWeapon();
@@ -306,11 +307,13 @@ export class SpiritForceArenaGotchi {
   }
 
   protected getMeleeWeapon(): SfaWearable | null {
-    return this.getWeapon("melee");
+    const meleeWeapon = this.getWeapon("melee");
+    return meleeWeapon ?? createDefaultMeleeWeapon();
   }
 
   protected getRangedWeapon(): SfaWearable | null {
-    return this.getWeapon("ranged");
+    const rangedWeapon = this.getWeapon("ranged");
+    return rangedWeapon ?? createDefaultRangedWeapon();
   }
 
   protected getGrenadeWeapon(): SfaWearable | null {
@@ -361,8 +364,11 @@ export class SpiritForceArenaGotchi {
     this.traits.stealth = Math.round(this.getStealth() * 100) / 100;
     this.traits.critical_chance = Math.round(this.getCriticalChance() * 100);
     this.traits.armor = Math.round(this.getPassiveDamageReduction() * 100);
-    this.traits.blocking_strength = Math.round(this.getActiveDamageReduction() * 100);
-    this.traits.critical_damages_multiplier = this.getCriticalDamagesMultiplier();
+    this.traits.blocking_strength = Math.round(
+      this.getActiveDamageReduction() * 100
+    );
+    this.traits.critical_damages_multiplier =
+      this.getCriticalDamagesMultiplier();
     this.traits.movement_speed = Math.round(this.getMovementSpeed() * 100);
     this.traits.evasion = this.getEvasion();
     this.traits.damage_to_npc = this.getDamageToNpc();
@@ -398,11 +404,7 @@ export class SpiritForceArenaGotchi {
 
   // Based on traits value gisplayed ion game, the max cap is not applied currently.
   getLuck(): number {
-    return this.getMinMaxValue(
-      this.traits.luck,
-      min_traits.min_luck,
-      99999
-    );
+    return this.getMinMaxValue(this.traits.luck, min_traits.min_luck, 99999);
   }
 
   getStealth(): number {
@@ -551,7 +553,6 @@ export class SpiritForceArenaGotchi {
     }
     return SfaClasses.DIVINE;
   }
- 
 }
 
 function mappedTrait(originalValue: number) {

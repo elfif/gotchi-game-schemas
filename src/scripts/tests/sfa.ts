@@ -79,15 +79,30 @@ const g15579: Gotchi = {
   id: "15579",
   name: "Zedoo",
   traits: {
-    brs: 536,
-    agg: 17,
-    nrg: 97,
-    spk: 97,
-    brn: 97,
+    brs: 550,
+    agg: 15,
+    nrg: 101,
+    spk: 98,
+    brn: 100,
     eys: 58,
     eyc: 95,
   },
-  wearables: [0,0,0,0, 229, 296, 0],
+  wearables: [135, 0, 0, 21, 23, 247, 0],
+};
+
+const g15627: Gotchi = {
+  id: "15627",
+  name: "Boubou",
+  traits: {
+    brs: 554,
+    agg: 31,
+    nrg: -7,
+    spk: -1,
+    brn: 101,
+    eys: 88,
+    eyc: 69,
+  },
+  wearables: [231, 0, 0, 235, 41, 141, 0],
 };
 
 const g14006: Gotchi = {
@@ -123,7 +138,7 @@ const g9024: Gotchi = {
 
 
 function main() {
-  const sfaGotchi = createSpiritForceArenaGotchi(g9024);
+  const sfaGotchi = createSpiritForceArenaGotchi(g15627);
   console.table([
     ["hp", sfaGotchi.traits.hp],
     ["ap", sfaGotchi.traits.ap],

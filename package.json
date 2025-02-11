@@ -1,6 +1,6 @@
 {
   "name": "gotchi-game-schemas",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "jsonlogic based schemas for aavegotchi-based games",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
